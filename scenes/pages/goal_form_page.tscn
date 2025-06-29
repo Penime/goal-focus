@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://wbrqasxhffhe"]
+
+[ext_resource type="Script" uid="uid://bx0pnwcghk8um" path="res://scripts/pages/goal_form.gd" id="1_7ndyj"]
+[ext_resource type="PackedScene" uid="uid://dnpx7v812uetk" path="res://scenes/components/question.tscn" id="2_go3t3"]
+
+[node name="GoalFormPage" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_7ndyj")
+
+[node name="ContantContainer" type="VBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ContantContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Question" parent="ContantContainer" instance=ExtResource("2_go3t3")]
+layout_mode = 2
+size_flags_vertical = 3
+question_massage = "מה תרצו לשפר היום?"
+
+[node name="Buttons" type="HBoxContainer" parent="ContantContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="ContantContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CancelButton"
+text = "חזרה"
+
+[node name="NextButton" type="Button" parent="ContantContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "הבא"

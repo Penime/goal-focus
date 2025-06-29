@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dblsxwc88cmw6"]
+
+[ext_resource type="Script" uid="uid://chc01b5t747oo" path="res://scripts/TraySystemManager.cs" id="1_fcrgv"]
+
+[node name="TraySystemManager" type="Node"]
+script = ExtResource("1_fcrgv")

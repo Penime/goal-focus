@@ -1,0 +1,17 @@
+extends Page
+
+@onready var back_button: Button = $ContantContainer/Buttons/BackButton
+@onready var next_button: Button = $ContantContainer/Buttons/NextButton
+
+
+func _ready() -> void:
+	back_button.pressed.connect(_on_back_button_pressed)
+	next_button.pressed.connect(_on_next_button_pressed)
+
+
+func _on_back_button_pressed() -> void:
+	change_page_to(GlobalData.GOAL_FORM_PAGE, "animate_in_from_right", "animate_out")
+
+
+func _on_next_button_pressed() -> void:
+	change_page_to(GlobalData.REMINDERS_PAGE, "animate_in_from_left", "animate_out")

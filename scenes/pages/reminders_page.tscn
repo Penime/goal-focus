@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c45apptpjqsau"]
+
+[ext_resource type="Script" uid="uid://bkd015dy6wnoo" path="res://scripts/pages/reminders_page.gd" id="1_mmyhl"]
+
+[node name="RemindersPage" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mmyhl")

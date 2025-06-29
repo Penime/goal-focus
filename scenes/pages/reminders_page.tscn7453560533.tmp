@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://c45apptpjqsau"]
+
+[ext_resource type="Script" uid="uid://bkd015dy6wnoo" path="res://scripts/pages/reminders_page.gd" id="1_mmyhl"]
+
+[node name="RemindersPage" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mmyhl")
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -16.5
+offset_right = 86.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+min_value = 1.0
+max_value = 360.0
+value = 5.0
+rounded = true
+alignment = 1
+prefix = "כל"
+suffix = "דקות"
+select_all_on_focus = true
