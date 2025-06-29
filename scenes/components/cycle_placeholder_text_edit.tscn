@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://8uipl43rgnr" path="res://scripts/components/cycle_placeholder_text_edit.gd" id="1_iebu1"]
 
-[node name="CyclePlaceholderTextEdit" type="TextEdit"]
+[node name="CycledPlaceholderTextEdit" type="TextEdit"]
 custom_minimum_size = Vector2(0, 74)
 layout_direction = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 14.0
 grow_horizontal = 2
+placeholder_text = "כותבים כאן"
 script = ExtResource("1_iebu1")
+placeholder_cycled_text = Array[String](["שלום", "לך", "עולם"])
 
 [node name="PlaceholderIntervalTimer" type="Timer" parent="."]
 wait_time = 2.0

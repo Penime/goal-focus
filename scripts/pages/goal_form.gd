@@ -1,7 +1,7 @@
 extends Page
 
-@onready var back_button: Button = $ContantContainer/Buttons/BackButton
-@onready var next_button: Button = $ContantContainer/Buttons/NextButton
+@onready var back_button: Button = $ContentContainer/Buttons/BackButton
+@onready var next_button: Button = $ContentContainer/Buttons/NextButton
 
 
 func _ready() -> void:

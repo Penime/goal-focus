@@ -13,7 +13,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_6cr0x")
 
-[node name="ContantContainer" type="VBoxContainer" parent="."]
+[node name="ContentContainer" type="VBoxContainer" parent="."]
 layout_direction = 3
 layout_mode = 1
 anchors_preset = 15
@@ -24,27 +24,27 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="ContantContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Question" parent="ContantContainer" instance=ExtResource("2_6cr0x")]
+[node name="Question" parent="ContentContainer" instance=ExtResource("2_6cr0x")]
 layout_mode = 2
 size_flags_vertical = 3
 question_massage = "איך אתם מתכננים לעשות זאת?"
 place_holder_massage = "בלה בלה בלה"
 
-[node name="Buttons" type="HBoxContainer" parent="ContantContainer"]
+[node name="Buttons" type="HBoxContainer" parent="ContentContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="ContantContainer/Buttons"]
+[node name="BackButton" type="Button" parent="ContentContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"CancelButton"
 text = "חזרה"
 
-[node name="NextButton" type="Button" parent="ContantContainer/Buttons"]
+[node name="NextButton" type="Button" parent="ContentContainer/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "הבא"

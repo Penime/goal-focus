@@ -8,19 +8,16 @@ const ANIMATION_DURATION: float = 1.3
 const FADE_DURATION: float = .95
 const START_FADE_DELAY: float = .25
 
-var inital_animation_callable: Callable
-
 
 func _do_animation(
 	target_position: Vector2,
 	target_modulate: Color,
 	initial_position: Vector2 = Vector2.ZERO,
-	initial_modulate: Color = Color.WHITE, 
+	initial_modulate: Color = Color.WHITE,
 	start_fade_delay: float = 0.0,
 	ease_type: Tween.EaseType = Tween.EASE_OUT,
 	trans_type: Tween.TransitionType = Tween.TRANS_CUBIC
 	) -> void:
-	
 	position = initial_position
 	modulate = initial_modulate
 	
