@@ -2,10 +2,10 @@ class_name QuestionWidget
 extends VBoxContainer
 
 @onready var question_label: Label = $QuestionLabel
-@onready var answer_text_edit: TextEdit = $AnswerTextEdit
+@onready var answer_text_edit: CycledPlaceholderTextEdit = $AnswerTextEdit
 
-@export var question_massage: String : set = _set_question_massage
-@export var place_holder_massage: String : set = _set_place_holder_answer
+@export var question_massage: String: set = _set_question_massage
+@export var place_holder_massage: String: set = _set_place_holder_answer
 
 
 func _set_question_massage(value: String) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnpx7v812uetk"]
+[gd_scene load_steps=4 format=3 uid="uid://dnpx7v812uetk"]
 
 [ext_resource type="Script" uid="uid://dxwtdokvivhm5" path="res://scripts/components/question.gd" id="1_df5n2"]
 [ext_resource type="Theme" uid="uid://clnnrc4ouqm7b" path="res://resources/soft_worm_theme.theme" id="1_sqboi"]
+[ext_resource type="PackedScene" uid="uid://b5fl30bckixct" path="res://scenes/components/cycle_placeholder_text_edit.tscn" id="3_rm78r"]
 
 [node name="Question" type="VBoxContainer"]
 layout_direction = 3
@@ -12,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_sqboi")
 script = ExtResource("1_df5n2")
+question_massage = null
+place_holder_massage = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false
@@ -24,14 +27,10 @@ layout_mode = 2
 theme_type_variation = &"MediumLabel"
 text = "שאלת השאלות"
 
-[node name="AnswerTextEdit" type="TextEdit" parent="."]
-custom_minimum_size = Vector2(0, 74)
+[node name="AnswerTextEdit" parent="." instance=ExtResource("3_rm78r")]
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "כותבים כאן"
-middle_mouse_paste_enabled = false
-wrap_mode = 1
-caret_blink = true
+placeholder_cycled_text = Array[String](["e", "f", "g"])
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2

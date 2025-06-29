@@ -1,6 +1,6 @@
 extends Node
 
-const WINDOW_POPUP = preload("res://scences/window_popup.tscn")
+const WINDOW_POPUP = preload("res://scenes/window_popup.tscn")
 
 var active_notifications = [] # Keep track of open notification windows
 

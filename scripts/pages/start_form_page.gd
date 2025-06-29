@@ -8,4 +8,4 @@ func _ready() -> void:
 
 
 func _on_start_form_button_pressed() -> void:
-	change_page_to(GlobalData.GOAL_FORM_PAGE, "animate_in_from_down", "animate_out")
+	change_page_to(GlobalData.GOAL_FORM_PAGE, "animate_in_from_left", "animate_out")
