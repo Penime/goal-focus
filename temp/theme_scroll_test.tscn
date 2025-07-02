@@ -1,0 +1,724 @@
+[gd_scene load_steps=3 format=3 uid="uid://b68k4ia8kyee3"]
+
+[ext_resource type="ButtonGroup" uid="uid://d2n5owdo6wnn2" path="res://resources/hour_buttons.tres" id="1_sd0b6"]
+[ext_resource type="ButtonGroup" uid="uid://bt4mjcgkd2bxc" path="res://resources/minutes_buttons.tres" id="2_44jt4"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="ContentContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="LabelsContainer" type="HBoxContainer" parent="ContentContainer"]
+layout_mode = 2
+
+[node name="HourLabel" type="Label" parent="ContentContainer/LabelsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "שעות"
+horizontal_alignment = 1
+
+[node name="MinuteLabel" type="Label" parent="ContentContainer/LabelsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "דקות"
+horizontal_alignment = 1
+
+[node name="TimeSelectorContainer" type="HBoxContainer" parent="ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HourButtonsScrollContainer" type="ScrollContainer" parent="ContentContainer/TimeSelectorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HourButtonsVBoxContainer" type="VBoxContainer" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Hour0" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "00"
+
+[node name="Hour1" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "01"
+
+[node name="Hour2" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "02"
+
+[node name="Hour3" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "03"
+
+[node name="Hour4" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "04"
+
+[node name="Hour5" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "05"
+
+[node name="Hour6" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "06"
+
+[node name="Hour7" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "07"
+
+[node name="Hour8" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "08"
+
+[node name="Hour9" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "09"
+
+[node name="Hour10" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "10"
+
+[node name="Hour11" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "11"
+
+[node name="Hour12" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "12"
+
+[node name="Hour13" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "13"
+
+[node name="Hour14" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "14"
+
+[node name="Hour15" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "15"
+
+[node name="Hour16" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "16"
+
+[node name="Hour17" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "17"
+
+[node name="Hour18" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "18"
+
+[node name="Hour19" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "19"
+
+[node name="Hour20" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "20"
+
+[node name="Hour21" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "21"
+
+[node name="Hour22" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "22"
+
+[node name="Hour23" type="Button" parent="ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("1_sd0b6")
+text = "23"
+
+[node name="MinuteButtonsScrollContainer" type="ScrollContainer" parent="ContentContainer/TimeSelectorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MinuteButtonsVBoxContainer" type="VBoxContainer" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Minute0" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "00"
+
+[node name="Minute1" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "01"
+
+[node name="Minute2" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "02"
+
+[node name="Minute3" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "03"
+
+[node name="Minute4" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "04"
+
+[node name="Minute5" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "05"
+
+[node name="Minute6" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "06"
+
+[node name="Minute7" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "07"
+
+[node name="Minute8" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "08"
+
+[node name="Minute9" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "09"
+
+[node name="Minute10" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "10"
+
+[node name="Minute11" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "11"
+
+[node name="Minute12" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "12"
+
+[node name="Minute13" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "13"
+
+[node name="Minute14" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "14"
+
+[node name="Minute15" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "15"
+
+[node name="Minute16" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "16"
+
+[node name="Minute17" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "17"
+
+[node name="Minute18" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "18"
+
+[node name="Minute19" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "19"
+
+[node name="Minute20" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "20"
+
+[node name="Minute21" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "21"
+
+[node name="Minute22" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "22"
+
+[node name="Minute23" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "23"
+
+[node name="Minute24" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "24"
+
+[node name="Minute25" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "25"
+
+[node name="Minute26" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "26"
+
+[node name="Minute27" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "27"
+
+[node name="Minute28" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "28"
+
+[node name="Minute29" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "29"
+
+[node name="Minute30" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "30"
+
+[node name="Minute31" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "31"
+
+[node name="Minute32" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "32"
+
+[node name="Minute33" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "33"
+
+[node name="Minute34" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "34"
+
+[node name="Minute35" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "35"
+
+[node name="Minute36" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "36"
+
+[node name="Minute37" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "37"
+
+[node name="Minute38" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "38"
+
+[node name="Minute39" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "39"
+
+[node name="Minute40" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "40"
+
+[node name="Minute41" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "41"
+
+[node name="Minute42" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "42"
+
+[node name="Minute43" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "43"
+
+[node name="Minute44" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "44"
+
+[node name="Minute45" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "45"
+
+[node name="Minute46" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "46"
+
+[node name="Minute47" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "47"
+
+[node name="Minute48" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "48"
+
+[node name="Minute49" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "49"
+
+[node name="Minute50" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "50"
+
+[node name="Minute51" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "51"
+
+[node name="Minute52" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "52"
+
+[node name="Minute53" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "53"
+
+[node name="Minute54" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "54"
+
+[node name="Minute55" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "55"
+
+[node name="Minute56" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "56"
+
+[node name="Minute57" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "57"
+
+[node name="Minute58" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "58"
+
+[node name="Minute59" type="Button" parent="ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtonsVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"HourSelectButton"
+toggle_mode = true
+button_group = ExtResource("2_44jt4")
+text = "59"

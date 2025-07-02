@@ -1,7 +1,13 @@
-class_name HourSelectorLineEdit
+class_name TimeSelectorLineEdit
 extends LineEdit
 
+@onready var time_selector_canvas_layer: CanvasLayer = $TimeSelectorCanvasLayer
+@onready var hour_buttons_container: VBoxContainer = $TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer
+@onready var minute_buttoontainer: VBoxContainer = $TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer
+
 var _last_valid_text: String = ""
+var hour: String
+var minute: String
 
 
 func _ready() -> void:
@@ -42,6 +48,7 @@ func _on_text_changed(new_text: String) -> void:
 func _on_text_submitted(final_text: String) -> void:
 	# When the user presses Enter, format the text.
 	_finalize_input(final_text)
+	$TimeSelectorCanvasLayer.show()
 
 
 func _on_focus_exited() -> void:

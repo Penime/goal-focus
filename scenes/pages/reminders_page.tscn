@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c45apptpjqsau"]
+[gd_scene load_steps=3 format=3 uid="uid://c45apptpjqsau"]
 
 [ext_resource type="Script" uid="uid://bkd015dy6wnoo" path="res://scripts/pages/reminders_page.gd" id="1_mmyhl"]
+[ext_resource type="PackedScene" uid="uid://cjy1rwhs5qebd" path="res://scenes/components/time_selector_line_edit.tscn" id="2_fygyq"]
 
 [node name="RemindersPage" type="Panel"]
 anchors_preset = 15
@@ -9,3 +10,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mmyhl")
+
+[node name="TimeSelectorLineEdit" parent="." instance=ExtResource("2_fygyq")]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 105.0
+offset_right = 180.688
+offset_bottom = 139.0
