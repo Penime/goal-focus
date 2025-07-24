@@ -58,3 +58,15 @@ func get_statuses_by_goal_id(id: int) -> Array:
 JOIN goals ON status.goal_id = goals.id
 WHERE goals.id = " + str(id))
 	return database.query_result
+
+
+func update_goal(goal_id: int, data: Dictionary) -> void:
+	database.update_rows("goals", "id = " + str(goal_id), data)
+
+
+func update_reminder(reminder_id: int, data: Dictionary) -> void:
+	database.update_rows("reminders", "id = " + str(reminder_id), data)
+
+
+func delete_goal(id: int) -> void:
+	database.delete_rows("goal", "id = " + str(id))
