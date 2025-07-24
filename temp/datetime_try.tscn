@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drlha7u5m42xj"]
+
+[ext_resource type="Script" uid="uid://c0ky15ukryek0" path="res://temp/datetime_try.gd" id="1_otedf"]
+
+[node name="DatetimeTry" type="Node"]
+script = ExtResource("1_otedf")

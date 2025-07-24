@@ -59,7 +59,7 @@ public partial class TraySystemManager : Node
 			_notifyIcon = new NotifyIcon();
 
 			string executableDir = OS.GetExecutablePath().GetBaseDir();
-			string iconFileName = "img.ico";
+			string iconFileName = "./img.ico";
 			string iconPath = Path.Combine(executableDir, iconFileName);
 
 			if (File.Exists(iconPath))

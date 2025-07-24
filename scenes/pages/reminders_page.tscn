@@ -13,7 +13,12 @@ script = ExtResource("1_mmyhl")
 
 [node name="TimeSelectorLineEdit" parent="." instance=ExtResource("2_fygyq")]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 105.0
-offset_right = 180.688
-offset_bottom = 139.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 97.0
+offset_top = 205.0
+offset_right = 210.0
+offset_bottom = 239.0
+grow_horizontal = 1
+grow_vertical = 1

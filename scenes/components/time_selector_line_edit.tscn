@@ -1,741 +1,937 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjy1rwhs5qebd"]
+[gd_scene load_steps=7 format=3 uid="uid://cjy1rwhs5qebd"]
 
 [ext_resource type="Script" uid="uid://6ft7121yub20" path="res://scripts/components/hour_selector_line_edit.gd" id="1_mnofo"]
+[ext_resource type="Texture2D" uid="uid://crnv1noqgune4" path="res://assets/clock-solid.svg" id="1_rbuf2"]
 [ext_resource type="ButtonGroup" uid="uid://d2n5owdo6wnn2" path="res://resources/hour_buttons.tres" id="2_snij2"]
 [ext_resource type="ButtonGroup" uid="uid://bt4mjcgkd2bxc" path="res://resources/minutes_buttons.tres" id="3_rbuf2"]
+[ext_resource type="Script" uid="uid://vye4kdvjw56k" path="res://scripts/components/time_select_button.gd" id="3_snij2"]
 
-[node name="TimeSelectorLineEdit" type="LineEdit"]
-offset_right = 79.6875
-offset_bottom = 34.0
-size_flags_horizontal = 0
-placeholder_text = "HH:MM"
-alignment = 1
-max_length = 5
-script = ExtResource("1_mnofo")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbuf2"]
+content_margin_left = 12.0
+bg_color = Color(1, 0.980392, 0.941176, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.984314, 0.572549, 0.235294, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
-[node name="TimeSelectorCanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="MarginContainer" type="MarginContainer" parent="TimeSelectorCanvasLayer"]
+[node name="TimeSelector" type="HBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/separation = 0
 
-[node name="Panel" type="Panel" parent="TimeSelectorCanvasLayer/MarginContainer"]
+[node name="ClockButton" type="Button" parent="."]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_vertical = 0
+theme_type_variation = &"IconButton"
+icon = ExtResource("1_rbuf2")
+expand_icon = true
+
+[node name="TimeSelectorLineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_rbuf2")
+placeholder_text = "HH:MM"
+alignment = 1
+max_length = 5
+script = ExtResource("1_mnofo")
+
+[node name="TimeSelectorCanvasLayer" type="CanvasLayer" parent="TimeSelectorLineEdit"]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="ContentContainer" type="VBoxContainer" parent="TimeSelectorCanvasLayer/MarginContainer"]
+[node name="ContentContainer" type="VBoxContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer"]
 layout_mode = 2
 
-[node name="LabelsContainer" type="HBoxContainer" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer"]
+[node name="LabelsContainer" type="HBoxContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer"]
 layout_mode = 2
 
-[node name="HourLabel" type="Label" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/LabelsContainer"]
+[node name="HourLabel" type="Label" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/LabelsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "שעות"
 horizontal_alignment = 1
 
-[node name="MinuteLabel" type="Label" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/LabelsContainer"]
+[node name="MinuteLabel" type="Label" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/LabelsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "דקות"
 horizontal_alignment = 1
 
-[node name="TimeSelectorContainer" type="HBoxContainer" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer"]
+[node name="TimeSelectorContainer" type="HBoxContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HourButtonsScrollContainer" type="ScrollContainer" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer"]
+[node name="HourButtonsScrollContainer" type="ScrollContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HourButtonsContainer" type="VBoxContainer" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer"]
+[node name="HourButtonsContainer" type="VBoxContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Hour0" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour0" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "00"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour1" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour1" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "01"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour2" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour2" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "02"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour3" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour3" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "03"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour4" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour4" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "04"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour5" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour5" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "05"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour6" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour6" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "06"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour7" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour7" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "07"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour8" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour8" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "08"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour9" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour9" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "09"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour10" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour10" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "10"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour11" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour11" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "11"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour12" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour12" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "12"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour13" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour13" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "13"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour14" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour14" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "14"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour15" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour15" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "15"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour16" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour16" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "16"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour17" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour17" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "17"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour18" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour18" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "18"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour19" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour19" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "19"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour20" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour20" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "20"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour21" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour21" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "21"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour22" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour22" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "22"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Hour23" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
+[node name="Hour23" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("2_snij2")
 text = "23"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="MinuteButtonsScrollContainer" type="ScrollContainer" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer"]
+[node name="MinuteButtonsScrollContainer" type="ScrollContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MinuteButtoontainer" type="VBoxContainer" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer"]
+[node name="MinuteButtoontainer" type="VBoxContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Minute0" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute0" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "00"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute1" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute1" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "01"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute2" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute2" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "02"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute3" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute3" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "03"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute4" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute4" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "04"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute5" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute5" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "05"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute6" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute6" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "06"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute7" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute7" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "07"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute8" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute8" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "08"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute9" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute9" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "09"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute10" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute10" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "10"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute11" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute11" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "11"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute12" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute12" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "12"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute13" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute13" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "13"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute14" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute14" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "14"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute15" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute15" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "15"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute16" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute16" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "16"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute17" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute17" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "17"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute18" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute18" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "18"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute19" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute19" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "19"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute20" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute20" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "20"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute21" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute21" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "21"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute22" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute22" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "22"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute23" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute23" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "23"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute24" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute24" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "24"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute25" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute25" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "25"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute26" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute26" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "26"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute27" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute27" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "27"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute28" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute28" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "28"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute29" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute29" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "29"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute30" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute30" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "30"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute31" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute31" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "31"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute32" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute32" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "32"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute33" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute33" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "33"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute34" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute34" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "34"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute35" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute35" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "35"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute36" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute36" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "36"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute37" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute37" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "37"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute38" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute38" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "38"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute39" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute39" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "39"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute40" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute40" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "40"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute41" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute41" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "41"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute42" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute42" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "42"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute43" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute43" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "43"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute44" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute44" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "44"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute45" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute45" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "45"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute46" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute46" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "46"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute47" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute47" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "47"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute48" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute48" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "48"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute49" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute49" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "49"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute50" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute50" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "50"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute51" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute51" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "51"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute52" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute52" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "52"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute53" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute53" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "53"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute54" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute54" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "54"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute55" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute55" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "55"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute56" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute56" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "56"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute57" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute57" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "57"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute58" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute58" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "58"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"
 
-[node name="Minute59" type="Button" parent="TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
+[node name="Minute59" type="Button" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_type_variation = &"HourSelectButton"
 toggle_mode = true
 button_group = ExtResource("3_rbuf2")
 text = "59"
+script = ExtResource("3_snij2")
+metadata/_custom_type_script = "uid://vye4kdvjw56k"

@@ -4,10 +4,35 @@ extends LineEdit
 @onready var time_selector_canvas_layer: CanvasLayer = $TimeSelectorCanvasLayer
 @onready var hour_buttons_container: VBoxContainer = $TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer
 @onready var minute_buttoontainer: VBoxContainer = $TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer
+@onready var clock_button: Button = $"../ClockButton"
 
 var _last_valid_text: String = ""
-var hour: String
-var minute: String
+var hour: String: set = _set_hour
+var minute: String: set = _set_minute
+var hour_selected = false
+var minute_selected = false
+
+
+func _set_hour(new_hour: String) -> void:
+	if not new_hour.is_valid_int():
+		return
+	hour = new_hour
+	var parts = text.split(":", false, 1)
+	if parts.size() == 2 and parts[1].is_valid_int():
+		text = new_hour + ":" + parts[1]
+	else:
+		text = new_hour + ":00"
+
+
+func _set_minute(new_minute: String) -> void:
+	if not new_minute.is_valid_int():
+		return
+	minute = new_minute
+	var parts = text.split(":", false, 1)
+	if parts.size() >= 1 and parts[0].is_valid_int():
+		text = parts[0] + ":" + new_minute
+	else:
+		text = "00:" + new_minute
 
 
 func _ready() -> void:
@@ -22,6 +47,14 @@ func _ready() -> void:
 
 	# Perform an initial validation and formatting of the text property.
 	_finalize_input(text)
+
+	# connect all selected signal of buttons
+	for button in hour_buttons_container.get_children():
+		button.selected.connect(_on_hour_button_pressed)
+	for button in minute_buttoontainer.get_children():
+		button.selected.connect(_on_minute_button_pressed)
+	
+	clock_button.pressed.connect(_on_clock_pressed)
 
 
 func _on_text_changed(new_text: String) -> void:
@@ -40,7 +73,11 @@ func _on_text_changed(new_text: String) -> void:
 	else:
 		# If the input is invalid, revert to the last valid text.
 		var current_caret_pos: int = caret_column
-		text = _last_valid_text
+		if _last_valid_text.length() != 2:
+			text = _last_valid_text
+		else:
+			text = _last_valid_text + ":"
+			current_caret_pos += 1
 		# Restore the caret position to be before the invalid character that was typed.
 		caret_column = max(0, current_caret_pos - 1)
 
@@ -48,7 +85,6 @@ func _on_text_changed(new_text: String) -> void:
 func _on_text_submitted(final_text: String) -> void:
 	# When the user presses Enter, format the text.
 	_finalize_input(final_text)
-	$TimeSelectorCanvasLayer.show()
 
 
 func _on_focus_exited() -> void:
@@ -56,23 +92,43 @@ func _on_focus_exited() -> void:
 	_finalize_input(text)
 
 
+func _on_hour_button_pressed(time_text: String) -> void:
+	hour_selected = true
+	hour = time_text
+	if minute_selected and hour_selected:
+		time_selector_canvas_layer.hide()
+
+
+func _on_minute_button_pressed(time_text: String) -> void:
+	minute_selected = true
+	minute = time_text
+	if minute_selected and hour_selected:
+		time_selector_canvas_layer.hide()
+
+
+func _on_clock_pressed() -> void:
+	time_selector_canvas_layer.show()
+	hour_selected = false
+	minute_selected = false
+
+
 func _finalize_input(input: String) -> void:
 	var parts = input.split(":", false, 1)
-	var hour = -1
-	var minute = -1
+	var hour_int = -1
+	var minute_int = -1
 
 	if parts.size() >= 1 and parts[0].is_valid_int():
-		hour = int(parts[0])
+		hour_int = int(parts[0])
 
 	if parts.size() == 2 and parts[1].is_valid_int():
-		minute = int(parts[1])
+		minute_int = int(parts[1])
 
-	if hour < 0 or hour > 23 or minute < 0 or minute > 59:
+	if hour_int < 0 or hour_int > 23 or minute_int < 0 or minute_int > 59:
 		# If the time is invalid (e.g., "25:00" or "abc"), clear the LineEdit.
 		text = ""
 	else:
 		# If valid, format it to HH:MM with leading zeros (e.g., "8:5" becomes "08:05").
-		text = "%02d:%02d" % [hour, minute]
+		text = "%02d:%02d" % [hour_int, minute_int]
 	
 	_last_valid_text = text
 

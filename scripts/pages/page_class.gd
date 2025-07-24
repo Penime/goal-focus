@@ -2,11 +2,15 @@ class_name Page
 extends Control
 
 signal animation_started
-signal animation_ended
+signal animation_ended(animation: Tween)
 
 const ANIMATION_DURATION: float = 1.3
 const FADE_DURATION: float = .95
 const START_FADE_DELAY: float = .25
+
+
+func _ready() -> void:
+	animation_ended.connect(_on_animation_ended)
 
 
 func _do_animation(
@@ -43,7 +47,7 @@ func _do_animation(
 	if modulate == Color.TRANSPARENT:
 		position_tween.kill()
 	
-	animation_ended.emit()
+	animation_ended.emit(color_tween)
 
 
 func animate_in() -> void:
@@ -88,3 +92,7 @@ func change_page_to(new_page_scene: PackedScene, in_animation_str: String, out_a
 	page.call(in_animation_str)
 	await animation_ended
 	queue_free()
+
+
+func _on_animation_ended(animation: Tween) -> void:
+	animation.kill()

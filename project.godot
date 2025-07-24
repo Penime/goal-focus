@@ -25,10 +25,8 @@ GlobalData="*res://globals/GlobalData.tscn"
 
 window/size/viewport_width=300
 window/size/viewport_height=475
-window/size/resizable=false
 window/size/transparent=true
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
+window/stretch/mode="canvas_items"
 window/per_pixel_transparency/allowed=true
 
 [dotnet]
@@ -37,7 +35,7 @@ project/assembly_name="Goal Focus"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/color-palette/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/godot_style/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [gui]
 
