@@ -1,4 +1,4 @@
-class_name Reminder
+class_name GoalReminder
 extends RefCounted
 
 var id: int = -1
@@ -13,7 +13,7 @@ func _init(at_time: float, goal_id: int) -> void:
 
 
 static func from_dictionary(data: Dictionary) -> Goal:
-	var new_reminder = Reminder.new(data.get("time", 0.0), data.get("goal_id"))
+	var new_reminder = GoalReminder.new(data.get("time", 0.0), data.get("goal_id"))
 	new_reminder.id = data.get("id", -1)
 	if not new_reminder.id or not new_reminder.time:
 		assert(false, "invalid reminder data from dictionary: " + str(data))
