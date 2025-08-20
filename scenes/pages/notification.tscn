@@ -15,23 +15,23 @@ shadow_size = 1
 shadow_offset = Vector2(1, 1)
 
 [node name="Notification" type="Panel"]
-offset_right = 150.0
-offset_bottom = 28.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_di23k")
 script = ExtResource("1_8c0yg")
-text = "texte here"
+text = "text here"
 duration = 3.5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Timer" type="Timer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_di23k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-offset_top = 2.0
-offset_right = 150.0
-offset_bottom = 28.0
 alignment = 1
 
-[node name="Text" type="Label" parent="HBoxContainer"]
+[node name="Text" type="Label" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 text = "some text here"
-
-[node name="Timer" type="Timer" parent="."]

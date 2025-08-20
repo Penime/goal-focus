@@ -5,14 +5,13 @@ extends Page
 @export_range(0.001, 10.0) var duration: float = 1
 
 @onready var timer: Timer = $Timer
-@onready var label: Label = $HBoxContainer/Text
+@onready var label: Label = $PanelContainer/HBoxContainer/Text
 
 
 func _ready() -> void:
 	timer.wait_time = duration
 	label.text = text
 	timer.timeout.connect(_on_timer_timeout)
-	position.y = -(size.y + 10)
 	timer.start()
 	animate_in_from_up()
 
