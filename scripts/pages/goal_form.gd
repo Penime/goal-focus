@@ -2,6 +2,7 @@ extends Page
 
 @onready var back_button: Button = $ContentContainer/Buttons/BackButton
 @onready var next_button: Button = $ContentContainer/Buttons/NextButton
+@onready var question: QuestionWidget = $ContentContainer/Question
 
 
 func _ready() -> void:

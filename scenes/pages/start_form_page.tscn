@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dyi6g5ye4qb1s"]
 
-[ext_resource type="Script" uid="uid://bidh0bjtto1my" path="res://scripts/pages/start_form_page.gd" id="1_2166t"]
+[ext_resource type="Script" uid="uid://bidh0bjtto1my" path="res://scripts/pages/start_form.gd" id="1_2166t"]
 
 [node name="StartFormPage" type="Panel"]
 anchors_preset = 15

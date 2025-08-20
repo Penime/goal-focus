@@ -31,3 +31,7 @@ func change_question_massage(new_massage: String) -> void:
 func change_place_holder_massage(new_place_holder_answer) -> void:
 	if new_place_holder_answer and answer_text_edit:
 		answer_text_edit.placeholder_text = place_holder_massage
+
+
+func get_answer() -> String:
+	return answer_text_edit.text

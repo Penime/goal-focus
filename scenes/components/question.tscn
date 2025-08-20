@@ -13,8 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_sqboi")
 script = ExtResource("1_df5n2")
-question_massage = null
-place_holder_massage = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false

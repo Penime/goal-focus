@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8oqigwx5hjog"]
+
+[ext_resource type="Script" uid="uid://b8pj3lxyjffw3" path="res://scripts/pages/notification.gd" id="1_8c0yg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di23k"]
+bg_color = Color(1, 0.980392, 0.941176, 1)
+border_width_top = 2
+border_color = Color(0.427451, 0.239216, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0, 0, 0, 0.14902)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[node name="Notification" type="Panel"]
+offset_right = 150.0
+offset_bottom = 28.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_di23k")
+script = ExtResource("1_8c0yg")
+text = "texte here"
+duration = 3.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_top = 2.0
+offset_right = 150.0
+offset_bottom = 28.0
+alignment = 1
+
+[node name="Text" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "some text here"
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,5 +1,5 @@
 class_name Page
-extends Control
+extends Panel
 
 signal animation_started
 signal animation_ended(animation: Tween)
@@ -54,32 +54,32 @@ func animate_in() -> void:
 	_do_animation(Vector2.ZERO, Color.WHITE, Vector2.ZERO, Color.TRANSPARENT)
 
 func animate_in_from_left() -> void:
-	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(-310, 0), Color.TRANSPARENT, START_FADE_DELAY)
+	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(-size.x, 0), Color.TRANSPARENT, START_FADE_DELAY)
 
 func animate_in_from_right() -> void:
-	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(310, 0), Color.TRANSPARENT, START_FADE_DELAY)
+	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(size.x, 0), Color.TRANSPARENT, START_FADE_DELAY)
 
 func animate_in_from_up() -> void:
-	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(0, -485), Color.TRANSPARENT, START_FADE_DELAY)
+	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(0, -size.y), Color.TRANSPARENT, START_FADE_DELAY)
 
 func animate_in_from_down() -> void:
-	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(0, 485), Color.TRANSPARENT, START_FADE_DELAY)
+	_do_animation(Vector2.ZERO, Color.WHITE, Vector2(0, size.y), Color.TRANSPARENT, START_FADE_DELAY)
 
 
 func animate_out() -> void:
 	_do_animation(Vector2.ZERO, Color.TRANSPARENT, Vector2.ZERO, Color.WHITE)
 
 func animate_out_to_left() -> void:
-	_do_animation(Vector2(-310, 0), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
+	_do_animation(Vector2(-size.x, 0), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
 
 func animate_out_to_right() -> void:
-	_do_animation(Vector2(310, 0), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
+	_do_animation(Vector2(size.x, 0), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
 
 func animate_out_to_up() -> void:
-	_do_animation(Vector2(0, -485), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
+	_do_animation(Vector2(0, -size.y), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
 
 func animate_out_to_down() -> void:
-	_do_animation(Vector2(0, 485), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
+	_do_animation(Vector2(0, size.y), Color.TRANSPARENT, Vector2.ZERO, Color.WHITE, 0.0, Tween.EASE_IN)
 
 
 func change_page_to(new_page_scene: PackedScene, in_animation_str: String, out_animation_str: String) -> void:
