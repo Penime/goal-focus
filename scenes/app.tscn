@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Notifications" type="Control" parent="."]
+[node name="Notifications" type="Control" parent="." groups=["notifications"]]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15

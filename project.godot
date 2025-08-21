@@ -38,6 +38,10 @@ project/assembly_name="Goal Focus"
 
 enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/godot_style/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
+[global_group]
+
+notifications=""
+
 [gui]
 
 theme/custom="uid://clnnrc4ouqm7b"
