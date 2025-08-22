@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c45apptpjqsau"]
 
 [ext_resource type="Script" uid="uid://bkd015dy6wnoo" path="res://scripts/pages/reminders_page.gd" id="1_mmyhl"]
-[ext_resource type="ButtonGroup" path="res://resources/reminder_select.tres" id="2_fygyq"]
+[ext_resource type="Texture2D" uid="uid://d2vtgljdgesxt" path="res://assets/clock.svg" id="2_fygyq"]
 
 [node name="RemindersPage" type="Panel"]
 layout_direction = 3
@@ -20,37 +20,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="AddReminderButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 3
+text = "הוסף תזכורות "
+icon = ExtResource("2_fygyq")
+icon_alignment = 2
+expand_icon = true
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_type_variation = &"BoldLabel"
-theme_override_font_sizes/font_size = 18
-text = "תזכורות למטרה:"
-horizontal_alignment = 1
+size_flags_vertical = 10
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
+[node name="BackButton" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
-theme_type_variation = &"FlatCheckBox"
-theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
-button_group = ExtResource("2_fygyq")
-text = "ללא תזכורות"
-flat = true
+size_flags_horizontal = 3
+theme_type_variation = &"CancelButton"
+text = "חזרה"
 
-[node name="CheckBox2" type="CheckBox" parent="VBoxContainer"]
+[node name="NextButton" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2
-theme_type_variation = &"FlatCheckBox"
-theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
-button_group = ExtResource("2_fygyq")
-text = "כל פרק זמן קבוע:"
-flat = true
-
-[node name="CheckBox3" type="CheckBox" parent="VBoxContainer"]
-layout_mode = 2
-theme_type_variation = &"FlatCheckBox"
-theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
-button_group = ExtResource("2_fygyq")
-text = "בזמנים ספציפיים:"
-flat = true
+size_flags_horizontal = 3
+text = "הבא"
