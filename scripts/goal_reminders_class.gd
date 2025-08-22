@@ -7,9 +7,10 @@ var repeat: float
 var goal_id: int
 
 
-func _init(at_time: float, associated_goal_id: int) -> void:
+func _init(at_time: float, associated_goal_id: int, repeat_time:=0.0) -> void:
 	self.time = at_time
 	self.goal_id = associated_goal_id
+	self.repeat = repeat_time
 
 
 static func from_dictionary(data: Dictionary) -> Goal:

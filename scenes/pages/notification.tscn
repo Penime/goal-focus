@@ -3,16 +3,9 @@
 [ext_resource type="Script" uid="uid://b8pj3lxyjffw3" path="res://scripts/pages/notification.gd" id="1_8c0yg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di23k"]
-bg_color = Color(1, 0.980392, 0.941176, 1)
-border_width_top = 2
+bg_color = Color(0.984314, 0.572549, 0.235294, 1)
 border_color = Color(0.427451, 0.239216, 0, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-shadow_color = Color(0, 0, 0, 0.14902)
-shadow_size = 1
-shadow_offset = Vector2(1, 1)
+corner_radius_bottom_right = 10
 
 [node name="Notification" type="Panel"]
 offset_right = 150.0
@@ -24,14 +17,20 @@ duration = 3.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-offset_top = 2.0
-offset_right = 150.0
-offset_bottom = 28.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
 [node name="Text" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.980392, 0.941176, 1)
 text = "some text here"
+horizontal_alignment = 1
+visible_characters = 18
+visible_ratio = 1.28571
 
 [node name="Timer" type="Timer" parent="."]

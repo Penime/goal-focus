@@ -1,12 +1,13 @@
 class_name QuestionWidget
 extends VBoxContainer
 
-@onready var question_label: Label = $QuestionLabel
+@onready var question_label: Label = $HBoxContainer/QuestionLabel
+@onready var mandatory_label: Label = $HBoxContainer/MandatoryLabel
 @onready var answer_text_edit: CycledPlaceholderTextEdit = $AnswerTextEdit
 
 @export var question_massage: String: set = _set_question_massage
 @export var place_holder_massage: String: set = _set_place_holder_answer
-
+@export var mandatory := false
 
 func _set_question_massage(value: String) -> void:
 	question_massage = value
@@ -19,6 +20,7 @@ func _set_place_holder_answer(value: String) -> void:
 
 
 func _ready() -> void:
+	mandatory_label.visible = mandatory
 	change_question_massage(question_massage)
 	change_place_holder_massage(place_holder_massage)
 
