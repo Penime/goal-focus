@@ -19,7 +19,7 @@ config/windows_native_icon="res://assets/img.ico"
 [autoload]
 
 TraySystemManager="*res://globals/TraySystemManager.tscn"
-GlobalData="*res://globals/GlobalData.tscn"
+GlobalData="*res://globals/global_data.tscn"
 Database="*res://globals/database.tscn"
 
 [display]

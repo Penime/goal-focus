@@ -11,29 +11,31 @@ grow_vertical = 2
 script = ExtResource("1_2166t")
 
 [node name="ContentContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 295.0
-offset_bottom = 470.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="ContentContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_type_variation = &"TitleLabel"
 text = "המטרה היומית שלכם"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="ContentContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_type_variation = &"LightLabel"
 text = "טרם נקבעה מטרה להיום. בואו נקבע אחת!"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -42,5 +44,13 @@ theme_override_constants/margin_bottom = 5
 [node name="StartFormButton" type="Button" parent="ContentContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 0
 text = "קבעו מטרה חדשה"
+
+[node name="GoalListButton" type="Button" parent="ContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
+theme_type_variation = &"CancelButton"
+text = "לרשימת המטרות"
