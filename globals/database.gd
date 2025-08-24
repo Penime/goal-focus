@@ -5,7 +5,7 @@ var data_to_insert := {}
 
 func _ready() -> void:
 	_database = SQLite.new()
-	_database.path = "res://data/data.db"
+	_database.path = "res://data.db"
 	_database.open_db()
 	_create_tables()
 
