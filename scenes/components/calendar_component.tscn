@@ -1,0 +1,345 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp5ndgh36nm8r"]
+
+[ext_resource type="Script" uid="uid://bh24ol0kto8pf" path="res://scripts/components/CalendarComponent.cs" id="1_uut5f"]
+[ext_resource type="ButtonGroup" uid="uid://bioj6yo2myk7m" path="res://resources/calendar_button_group.tres" id="2_xe0hu"]
+
+[node name="CalendarComponent" type="Panel"]
+layout_direction = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uut5f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Date" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackMonthButton" type="Button" parent="VBoxContainer/Date"]
+layout_mode = 2
+theme_type_variation = &"CalendarNavButton"
+text = ">"
+
+[node name="Label" type="Label" parent="VBoxContainer/Date"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
+text = "שנה חודש"
+horizontal_alignment = 1
+
+[node name="NextMonthButton" type="Button" parent="VBoxContainer/Date"]
+layout_mode = 2
+theme_type_variation = &"CalendarNavButton"
+text = "<"
+
+[node name="Day" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "6"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/Day"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "7"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 7
+
+[node name="Button" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button2" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button3" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button4" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button5" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button6" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button7" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button8" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button9" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button10" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button11" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button12" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button13" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button14" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button15" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button16" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button17" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button18" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button19" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button20" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button21" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button22" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button23" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button24" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button25" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button26" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button27" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button28" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "א"
+
+[node name="Button29" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button30" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button31" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button32" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button33" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button34" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button35" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="DateLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "תאריך"
+horizontal_alignment = 1

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b8pj3lxyjffw3" path="res://scripts/pages/notification.gd" id="1_8c0yg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di23k"]
-bg_color = Color(0.984314, 0.572549, 0.235294, 1)
+bg_color = Color(0.717647, 0.47451, 0.121569, 1)
 border_color = Color(0.427451, 0.239216, 0, 1)
 corner_radius_bottom_right = 10
 
