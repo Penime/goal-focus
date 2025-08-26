@@ -179,6 +179,7 @@ public partial class TraySystemManager : Node
 			_notifyIcon.Dispose();
 			_notifyIcon = null;
 			GD.Print("System tray icon disposed.");
+			QueueFree();
 		}
 	}
 }

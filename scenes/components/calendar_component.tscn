@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cp5ndgh36nm8r"]
 
-[ext_resource type="Script" uid="uid://bh24ol0kto8pf" path="res://scripts/components/CalendarComponent.cs" id="1_uut5f"]
+[ext_resource type="Script" uid="uid://bdlxbe7v2v5wh" path="res://scripts/components/CalendarComponent.cs" id="1_uut5f"]
 [ext_resource type="ButtonGroup" uid="uid://bioj6yo2myk7m" path="res://resources/calendar_button_group.tres" id="2_xe0hu"]
 
 [node name="CalendarComponent" type="Panel"]
@@ -40,52 +40,6 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_type_variation = &"CalendarNavButton"
 text = "<"
-
-[node name="Day" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "1"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "2"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "3"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "4"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "5"
-horizontal_alignment = 1
-
-[node name="Label6" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "6"
-horizontal_alignment = 1
-
-[node name="Label7" type="Label" parent="VBoxContainer/Day"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "7"
-horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -332,6 +286,55 @@ button_group = ExtResource("2_xe0hu")
 text = "כא"
 
 [node name="Button35" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button36" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button37" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button38" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button39" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button40" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button41" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_type_variation = &"CalendarButton"
+toggle_mode = true
+button_group = ExtResource("2_xe0hu")
+text = "כא"
+
+[node name="Button42" type="Button" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 theme_type_variation = &"CalendarButton"
 toggle_mode = true
