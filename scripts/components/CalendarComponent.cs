@@ -39,6 +39,7 @@ public partial class CalendarComponent : Panel
 
     public override void _Ready()
     {
+        _hebrewCulture.DateTimeFormat.Calendar = _hebrewCalendar;
         _prevMonthButton = GetNode<Button>("VBoxContainer/Date/BackMonthButton");
         _nextMonthButton = GetNode<Button>("VBoxContainer/Date/NextMonthButton");
         _monthYearLabel = GetNode<Label>("VBoxContainer/Date/Label");
@@ -195,20 +196,18 @@ public partial class CalendarComponent : Panel
 
     private string GetHebrewMonthName(int year, int month)
     {
-        // The built-in hebrew culture can be weird with leap months.
-        // This is a more robust way to get the correct month name.
-        if (IsHebrew)
+        try
         {
-            bool isLeap = _hebrewCalendar.IsLeapYear(year);
-            if (isLeap)
-            {
-                if (month == 6) return "אדר א'";
-                if (month == 7) return "אדר ב'";
-                // Adjust for months after Adar in a leap year
-                if (month > 7) return _hebrewCulture.DateTimeFormat.GetMonthName(month - 1);
-            }
+            DateTime dt = _hebrewCalendar.ToDateTime(year, month, 1, 0, 0, 0, 0);
+            // _hebrewCulture has been configured in _Ready() to use _hebrewCalendar.
+            return dt.ToString("MMMM", _hebrewCulture);
         }
-        return _hebrewCulture.DateTimeFormat.GetMonthName(month);
+        catch (Exception ex)
+        {
+            GD.PrintErr($"Error in GetHebrewMonthName for year={year}, month={month}: {ex.Message}");
+            // Fallback for safety, though the new method should be more reliable.
+            return _hebrewCulture.DateTimeFormat.GetMonthName(month);
+        }
     }
 
     private string ToGematria(int number)
