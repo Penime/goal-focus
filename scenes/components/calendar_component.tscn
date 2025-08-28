@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp5ndgh36nm8r"]
+[gd_scene load_steps=4 format=3 uid="uid://cp5ndgh36nm8r"]
 
 [ext_resource type="Script" uid="uid://bdlxbe7v2v5wh" path="res://scripts/components/CalendarComponent.cs" id="1_uut5f"]
 [ext_resource type="ButtonGroup" uid="uid://bioj6yo2myk7m" path="res://resources/calendar_button_group.tres" id="2_xe0hu"]
+[ext_resource type="PackedScene" uid="uid://cjy1rwhs5qebd" path="res://scenes/components/time_selector_line_edit.tscn" id="3_22rat"]
 
 [node name="CalendarComponent" type="Panel"]
 layout_direction = 3
@@ -104,7 +105,7 @@ horizontal_alignment = 1
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 3
+size_flags_vertical = 4
 theme_override_constants/h_separation = 3
 columns = 7
 
@@ -402,8 +403,14 @@ toggle_mode = true
 button_group = ExtResource("2_xe0hu")
 text = "כא"
 
+[node name="TimeSelector" parent="VBoxContainer" instance=ExtResource("3_22rat")]
+z_index = 1
+layout_direction = 2
+layout_mode = 2
+alignment = 1
+
 [node name="DateLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 2
+size_flags_vertical = 0
 text = "תאריך"
 horizontal_alignment = 1
