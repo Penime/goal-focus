@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8oqigwx5hjog"]
+[gd_scene load_steps=4 format=3 uid="uid://b8oqigwx5hjog"]
 
 [ext_resource type="Script" uid="uid://b8pj3lxyjffw3" path="res://scripts/pages/notification.gd" id="1_8c0yg"]
+[ext_resource type="Script" uid="uid://c0sbyvwf6ds6r" path="res://scripts/fade_animation_component.gd" id="2_2f7fo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di23k"]
 bg_color = Color(0.984314, 0.572549, 0.235294, 1)
 border_color = Color(0.427451, 0.239216, 0, 1)
 corner_radius_bottom_right = 10
 
-[node name="Notification" type="Panel"]
+[node name="Notification" type="PanelContainer"]
 offset_right = 150.0
-offset_bottom = 28.0
+offset_bottom = 26.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_di23k")
 script = ExtResource("1_8c0yg")
 text = "texte here"
@@ -17,18 +18,23 @@ duration = 3.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(150, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 alignment = 1
 
-[node name="Text" type="Label" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 11
+
+[node name="TextLabel" type="Label" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.980392, 0.941176, 1)
 text = "some text here"
 horizontal_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="FadeAnimationComponent" type="Node" parent="."]
+script = ExtResource("2_2f7fo")
+metadata/_custom_type_script = "uid://c0sbyvwf6ds6r"

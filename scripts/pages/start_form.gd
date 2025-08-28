@@ -1,6 +1,7 @@
 extends Page
 
 @onready var start_form_button: Button = $ContentContainer/StartFormButton
+@onready var goal_list_button: Button = $ContentContainer/GoalListButton
 
 
 func _ready() -> void:

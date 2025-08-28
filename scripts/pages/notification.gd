@@ -1,23 +1,25 @@
 class_name Notification
-extends Page
+extends PanelContainer
 
 @export var text: String
 @export_range(0.001, 10.0) var duration: float = 1
 
 @onready var timer: Timer = $Timer
-@onready var label: Label = $HBoxContainer/Text
+@onready var text_label: Label = $HBoxContainer/MarginContainer/TextLabel
+@onready var fade_animation_component: FadeAnimationComponent = $FadeAnimationComponent
 
 
 func _ready() -> void:
+	fade_animation_component.target_node = self
 	timer.wait_time = duration
-	label.text = text
+	text_label.text = text
 	timer.timeout.connect(_on_timer_timeout)
 	position.y = -(size.y + 10)
 	timer.start()
-	animate_in_from_up()
+	fade_animation_component.animate_in_from_up()
 
 
 func _on_timer_timeout() -> void:
-	animate_out()
-	await animation_ended
+	fade_animation_component.animate_out()
+	await fade_animation_component.animation_ended
 	queue_free()
