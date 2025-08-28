@@ -40,9 +40,9 @@ public partial class CalendarComponent : Panel
     public override void _Ready()
     {
         _hebrewCulture.DateTimeFormat.Calendar = _hebrewCalendar;
-        _prevMonthButton = GetNode<Button>("VBoxContainer/Date/BackMonthButton");
-        _nextMonthButton = GetNode<Button>("VBoxContainer/Date/NextMonthButton");
-        _monthYearLabel = GetNode<Label>("VBoxContainer/Date/Label");
+        _prevMonthButton = GetNode<Button>("VBoxContainer/MarginContainer/Date/BackMonthButton");
+        _nextMonthButton = GetNode<Button>("VBoxContainer/MarginContainer/Date/NextMonthButton");
+        _monthYearLabel = GetNode<Label>("VBoxContainer/MarginContainer/Date/Label");
         _daysGrid = GetNode<GridContainer>("VBoxContainer/GridContainer");
         _selectedDateLabel = GetNode<Label>("VBoxContainer/DateLabel");
         _dayButtonGroup = ResourceLoader.Load<ButtonGroup>("res://resources/calendar_button_group.tres");

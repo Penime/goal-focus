@@ -21,29 +21,35 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Date" type="HBoxContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 3
+
+[node name="Date" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="BackMonthButton" type="Button" parent="VBoxContainer/Date"]
+[node name="BackMonthButton" type="Button" parent="VBoxContainer/MarginContainer/Date"]
 layout_mode = 2
 theme_type_variation = &"CalendarNavButton"
 text = ">"
 
-[node name="Label" type="Label" parent="VBoxContainer/Date"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/Date"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
 text = "שנה חודש"
 horizontal_alignment = 1
 
-[node name="NextMonthButton" type="Button" parent="VBoxContainer/Date"]
+[node name="NextMonthButton" type="Button" parent="VBoxContainer/MarginContainer/Date"]
 layout_mode = 2
 theme_type_variation = &"CalendarNavButton"
 text = "<"
 
 [node name="Date2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer/Date2"]
@@ -99,6 +105,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/h_separation = 3
 columns = 7
 
 [node name="Button" type="Button" parent="VBoxContainer/GridContainer"]

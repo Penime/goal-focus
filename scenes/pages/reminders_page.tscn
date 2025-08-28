@@ -44,6 +44,8 @@ size_flags_horizontal = 3
 text = "הבא"
 
 [node name="CreateReminderCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
 
 [node name="Panel" type="Panel" parent="CreateReminderCanvasLayer"]
 anchors_preset = 15
