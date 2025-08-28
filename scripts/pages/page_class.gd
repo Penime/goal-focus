@@ -4,7 +4,7 @@ extends Panel
 signal animation_started
 signal animation_ended(animation: Tween)
 
-const ANIMATION_DURATION: float = 1.3
+const ANIMATION_DURATION: float = .25 # 1.3
 const FADE_DURATION: float = .95
 const START_FADE_DELAY: float = .25
 

@@ -4,9 +4,5 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <RootNamespace>GoalFocus</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
-
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <PublishSingleFile>false</PublishSingleFile>
   </PropertyGroup>
 </Project>

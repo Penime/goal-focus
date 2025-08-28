@@ -4,6 +4,7 @@ extends Page
 @onready var back_button: Button = $VBoxContainer/Buttons/BackButton
 @onready var next_button: Button = $VBoxContainer/Buttons/NextButton
 @onready var add_reminder_button: Button = $VBoxContainer/AddReminderButton
+@onready var create_reminder_canvas_layer: CanvasLayer = $CreateReminderCanvasLayer
 
 
 func _ready() -> void:
@@ -21,4 +22,4 @@ func _on_next_button_pressed() -> void:
 
 
 func _on_add_reminder_pressed() -> void:
-	return
+	create_reminder_canvas_layer.show()

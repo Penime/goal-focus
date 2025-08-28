@@ -23,6 +23,11 @@ public partial class TraySystemManager : Node
 
 	public override void _Ready()
 	{
+		if (OS.IsDebugBuild())
+		{
+			GD.Print("Debug build, skipping tray icon setup.");
+			return;
+		}
 		if (OS.GetName() == "Windows")
 		{
 			_hWnd = (IntPtr)DisplayServer.WindowGetNativeHandle(DisplayServer.HandleType.WindowHandle);
@@ -179,6 +184,7 @@ public partial class TraySystemManager : Node
 			_notifyIcon.Dispose();
 			_notifyIcon = null;
 			GD.Print("System tray icon disposed.");
+			QueueFree();
 		}
 	}
 }

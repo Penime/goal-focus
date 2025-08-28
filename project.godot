@@ -18,9 +18,9 @@ config/windows_native_icon="res://assets/img.ico"
 
 [autoload]
 
-TraySystemManager="*res://globals/TraySystemManager.tscn"
 GlobalData="*res://globals/global_data.tscn"
 Database="*res://globals/database.tscn"
+TraySystemManager="*res://globals/TraySystemManager.tscn"
 
 [display]
 
@@ -36,7 +36,7 @@ project/assembly_name="Goal Focus"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/godot_style/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/nhb_functions_on_the_fly/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/godot_style/plugin.cfg", "res://addons/nhb_functions_on_the_fly/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [global_group]
 
