@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dnutecuhedno1"
-path="res://.godot/imported/PlaypenSansHebrew-Light.ttf-7c109d2a0a9a8e395024fa68aa39e5ef.fontdata"
+path="res://.godot/imported/PlaypenSansHebrew-Light.ttf-7b3b559500a3b52134ede7f859cfcfdb.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Playpen_Sans_Hebrew/PlaypenSansHebrew-Light.ttf"
-dest_files=["res://.godot/imported/PlaypenSansHebrew-Light.ttf-7c109d2a0a9a8e395024fa68aa39e5ef.fontdata"]
+source_file="res://resources/Fonts/Playpen_Sans_Hebrew/PlaypenSansHebrew-Light.ttf"
+dest_files=["res://.godot/imported/PlaypenSansHebrew-Light.ttf-7b3b559500a3b52134ede7f859cfcfdb.fontdata"]
 
 [params]
 

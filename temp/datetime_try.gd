@@ -2,7 +2,7 @@ extends Node
 
 func _ready():
 	var time = Time.get_unix_time_from_system()
-	print(time)
+	print(HebrewDateConverter.GetHebrewDateStringFromUnix(time))
 	
 	var goal := {
 		"goal": "some goal",

@@ -5,12 +5,14 @@ extends Page
 @onready var next_button: Button = $VBoxContainer/Buttons/NextButton
 @onready var add_reminder_button: Button = $VBoxContainer/AddReminderButton
 @onready var create_reminder_canvas_layer: CanvasLayer = $CreateReminderCanvasLayer
+@onready var calendar_component: Panel = $CreateReminderCanvasLayer/MarginContainer/CalendarComponent
 
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back_button_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)
 	add_reminder_button.pressed.connect(_on_add_reminder_pressed)
+	calendar_component.DateSelected.connect(_on_date_selected)
 
 
 func _on_back_button_pressed() -> void:
@@ -23,3 +25,7 @@ func _on_next_button_pressed() -> void:
 
 func _on_add_reminder_pressed() -> void:
 	create_reminder_canvas_layer.show()
+
+
+func _on_date_selected(_date_name, unix) -> void:
+	print(HebrewDateConverter.GetHebrewDateStringFromUnix(unix))

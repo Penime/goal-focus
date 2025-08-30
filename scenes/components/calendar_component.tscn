@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cp5ndgh36nm8r"]
 
-[ext_resource type="Script" uid="uid://bdlxbe7v2v5wh" path="res://scripts/components/CalendarComponent.cs" id="1_uut5f"]
+[ext_resource type="Script" uid="uid://bdlxbe7v2v5wh" path="res://Scripts/components/CalendarComponent.cs" id="1_uut5f"]
 [ext_resource type="ButtonGroup" uid="uid://bioj6yo2myk7m" path="res://resources/calendar_button_group.tres" id="2_xe0hu"]
 [ext_resource type="PackedScene" uid="uid://cjy1rwhs5qebd" path="res://scenes/components/time_selector_line_edit.tscn" id="3_22rat"]
 
@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uut5f")
-IsHebrew = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

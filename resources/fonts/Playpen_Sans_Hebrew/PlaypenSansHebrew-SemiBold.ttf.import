@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://thgq4gqg5rbm"
-path="res://.godot/imported/PlaypenSansHebrew-SemiBold.ttf-9ecac6338111ec0014224d33546b0d97.fontdata"
+path="res://.godot/imported/PlaypenSansHebrew-SemiBold.ttf-8136455d43b4cef13d9d8399b90a55a5.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Playpen_Sans_Hebrew/PlaypenSansHebrew-SemiBold.ttf"
-dest_files=["res://.godot/imported/PlaypenSansHebrew-SemiBold.ttf-9ecac6338111ec0014224d33546b0d97.fontdata"]
+source_file="res://resources/Fonts/Playpen_Sans_Hebrew/PlaypenSansHebrew-SemiBold.ttf"
+dest_files=["res://.godot/imported/PlaypenSansHebrew-SemiBold.ttf-8136455d43b4cef13d9d8399b90a55a5.fontdata"]
 
 [params]
 

@@ -21,6 +21,7 @@ config/windows_native_icon="res://assets/img.ico"
 GlobalData="*res://globals/global_data.tscn"
 Database="*res://globals/database.tscn"
 TraySystemManager="*res://globals/TraySystemManager.tscn"
+HebrewDateConverter="*res://globals/HebrewDateConverter.cs"
 
 [display]
 

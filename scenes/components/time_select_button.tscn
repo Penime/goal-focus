@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bf53wshpyxlkt"]
 
-[ext_resource type="Script" uid="uid://vye4kdvjw56k" path="res://scripts/components/time_select_button.gd" id="1_h0vid"]
+[ext_resource type="Script" uid="uid://vye4kdvjw56k" path="res://Scripts/components/time_select_button.gd" id="1_h0vid"]
 
 [node name="TimeSelectButton" type="Button"]
 offset_right = 24.0
