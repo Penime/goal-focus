@@ -1,6 +1,8 @@
 class_name TimeSelectorLineEdit
 extends LineEdit
 
+signal time_set(minute, hour)
+
 @onready var time_selector_canvas_layer: CanvasLayer = $TimeSelectorCanvasLayer
 @onready var hour_buttons_container: VBoxContainer = $TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/HourButtonsScrollContainer/HourButtonsContainer
 @onready var minute_buttoontainer: VBoxContainer = $TimeSelectorCanvasLayer/MarginContainer/ContentContainer/TimeSelectorContainer/MinuteButtonsScrollContainer/MinuteButtoontainer
@@ -126,6 +128,8 @@ func _on_hour_button_pressed(time_text: String) -> void:
 	hour = time_text
 	if _minute_selected and _hour_selected:
 		time_selector_canvas_layer.hide()
+		grab_focus()
+		release_focus()
 
 
 func _on_minute_button_pressed(time_text: String) -> void:
@@ -133,6 +137,8 @@ func _on_minute_button_pressed(time_text: String) -> void:
 	minute = time_text
 	if _minute_selected and _hour_selected:
 		time_selector_canvas_layer.hide()
+		grab_focus()
+		release_focus()
 
 
 func _on_clock_pressed() -> void:
@@ -169,7 +175,7 @@ func _finalize_input(input: String) -> void:
 		text = "%02d:%02d" % [hour_int, minute_int]
 		hour = "%02d" % [hour_int]
 		minute = "%02d" % [minute_int]
-	
+		time_set.emit(minute, hour)
 	_last_valid_text = text
 
 

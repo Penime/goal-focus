@@ -29,10 +29,13 @@ public partial class CalendarComponent : Panel
 	private GridContainer _daysGrid;
 	private CheckBox _hebrewCheckBox;
 	private Button _todayButton;
+	private Node _timeSelector;
 	private ButtonGroup _dayButtonGroup;
 
 	private DateTime _currentDate = DateTime.Today;
 	private DateTime _selectedDate = DateTime.Today;
+	private int _selectedHour = 0;
+	private int _selectedMinute = 0;
 	private bool _isReady = false;
 
 	private readonly HebrewCalendar _hebrewCalendar = new HebrewCalendar();
@@ -52,6 +55,7 @@ public partial class CalendarComponent : Panel
 		_selectedDateLabel = GetNode<Button>("VBoxContainer/DateButton");
 		_hebrewCheckBox = GetNode<CheckBox>("VBoxContainer/CalendarControl/CheckBox");
 		_todayButton = GetNode<Button>("VBoxContainer/CalendarControl/Button");
+		_timeSelector = GetNode<Node>("VBoxContainer/TimeSelector");
 		_dayButtonGroup = ResourceLoader.Load<ButtonGroup>("res://resources/calendar_button_group.tres");
 
 
@@ -61,6 +65,11 @@ public partial class CalendarComponent : Panel
 
 		_hebrewCheckBox.ButtonPressed = IsHebrew;
 		_hebrewCheckBox.Toggled += OnHebrewCheckToggled;
+
+		_timeSelector.Connect("time_changed", Callable.From<int, int>(OnTimeChanged));
+		_selectedHour = _timeSelector.Get("hour").As<int>();
+		_selectedMinute = _timeSelector.Get("minute").As<int>();
+		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0);
 
 		_isReady = true;
 		DrawCalendar();
@@ -173,7 +182,7 @@ public partial class CalendarComponent : Panel
 		GD.Print($"OnDayButtonPressed: Year={year}, Month={month}, Day={day}, Calendar={cal.GetType().Name}");
 		try
 		{
-			_selectedDate = new DateTime(year, month, day, cal);
+			_selectedDate = new DateTime(year, month, day, _selectedHour, _selectedMinute, 0, cal);
 			GD.Print($"Successfully created _selectedDate: {_selectedDate}");
 			UpdateSelectedDateLabel();
 			long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
@@ -192,11 +201,13 @@ public partial class CalendarComponent : Panel
 	{
 		if (IsHebrew)
 		{
-			_selectedDateLabel.Text = _hebrewDateConverter.GetHebrewDateString(_selectedDate);
+			string hebrewDayOfWeek = _selectedDate.ToString("dddd", _hebrewCulture);
+			string timeString = _selectedDate.ToString("HH:mm");
+			_selectedDateLabel.Text = $"{hebrewDayOfWeek} {timeString}";
 		}
 		else
 		{
-			_selectedDateLabel.Text = _selectedDate.ToString("dddd, dd MMMM yyyy");
+			_selectedDateLabel.Text = _selectedDate.ToString("dddd HH:mm");
 		}
 	}
 
@@ -211,10 +222,20 @@ public partial class CalendarComponent : Panel
 	private void GoToToday()
 	{
 		_currentDate = DateTime.Today;
-		_selectedDate = DateTime.Today;
+		_selectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, _selectedHour, _selectedMinute, 0);
 		DrawCalendar();
 		UpdateSelectedDateLabel();
 		// Emit signal to notify other components of the date change
+		long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
+		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, unixTime);
+	}
+
+	private void OnTimeChanged(int hour, int minute)
+	{
+		_selectedHour = hour;
+		_selectedMinute = minute;
+		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0);
+		UpdateSelectedDateLabel();
 		long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
 		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, unixTime);
 	}
