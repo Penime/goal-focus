@@ -9,8 +9,8 @@ extends LineEdit
 var _last_valid_text: String = ""
 var hour: String: set = _set_hour
 var minute: String: set = _set_minute
-var hour_selected = false
-var minute_selected = false
+var _hour_selected = false
+var _minute_selected = false
 
 
 func _set_hour(new_hour: String) -> void:
@@ -64,6 +64,27 @@ func _on_text_changed(new_text: String) -> void:
 		return
 
 	if _is_valid_partial_input(new_text):
+		var parts = new_text.split(":", false, 1)
+
+		var hour_str = parts[0]
+		# If the user types a single digit hour greater than 2 (e.g., '3'),
+		# automatically prepend a '0' and add a colon, making it "03:".
+		if hour_str.length() == 1 and int(hour_str[0]) > 2:
+			new_text = "0" + hour_str[0] + ":"
+			text = new_text
+			_last_valid_text = new_text
+			caret_column = 3
+		
+		if parts.size() == 2:
+			var minute_str = parts[1]
+			# If the user types a single digit minute greater than 5 (e.g., '7' in "12:7"),
+			# automatically prepend a '0', making it "12:07".
+			if int(minute_str[0]) > 5:
+				new_text = hour_str + ":" + "0" + minute_str[0]
+				text = new_text
+				_last_valid_text = new_text
+				caret_column = 5
+
 		_last_valid_text = new_text
 		# A small UX improvement: automatically add the colon after a valid hour is typed.
 		if new_text.length() == 2 and not new_text.contains(":"):
@@ -93,23 +114,32 @@ func _on_focus_exited() -> void:
 
 
 func _on_hour_button_pressed(time_text: String) -> void:
-	hour_selected = true
+	_hour_selected = true
 	hour = time_text
-	if minute_selected and hour_selected:
+	if _minute_selected and _hour_selected:
 		time_selector_canvas_layer.hide()
 
 
 func _on_minute_button_pressed(time_text: String) -> void:
-	minute_selected = true
+	_minute_selected = true
 	minute = time_text
-	if minute_selected and hour_selected:
+	if _minute_selected and _hour_selected:
 		time_selector_canvas_layer.hide()
 
 
 func _on_clock_pressed() -> void:
+	for hour_button in hour_buttons_container.get_children():
+		if hour_button.text == hour:
+			hour_button.button_pressed = true
+			break
+	for minute_button in minute_buttoontainer.get_children():
+		if minute_button.text == minute:
+			minute_button.button_pressed = true
+			break
+	
 	time_selector_canvas_layer.show()
-	hour_selected = false
-	minute_selected = false
+	_hour_selected = false
+	_minute_selected = false
 
 
 func _finalize_input(input: String) -> void:
@@ -129,11 +159,18 @@ func _finalize_input(input: String) -> void:
 	else:
 		# If valid, format it to HH:MM with leading zeros (e.g., "8:5" becomes "08:05").
 		text = "%02d:%02d" % [hour_int, minute_int]
+		hour = "%02d" % [hour_int]
+		minute = "%02d" % [minute_int]
 	
 	_last_valid_text = text
 
 
 func _is_valid_partial_input(input: String) -> bool:
+	if input.is_empty():
+		text = ""
+		_last_valid_text = text
+		return false
+
 	# This function validates the input as the user types.
 	# It allows for partially complete, but valid, time strings.
 	var parts = input.split(":", true, 1) # Split only once
@@ -146,9 +183,9 @@ func _is_valid_partial_input(input: String) -> bool:
 	if not hour_str.is_empty():
 		if not hour_str.is_valid_int(): return false
 		if hour_str.length() > 2: return false
-		var hour_val = int(hour_str)
-		if hour_str.length() == 1 and hour_val > 2: return false # e.g., "3" is invalid as first digit
-		if hour_str.length() == 2 and hour_val > 23: return false
+		# var hour_val = int(hour_str)
+		# if hour_str.length() == 1 and hour_val > 2: return false # e.g., "3" is invalid as first digit
+		# if hour_str.length() == 2 and hour_val > 23: return false
 
 	# Validate Minute Part
 	if parts.size() == 2:
@@ -156,8 +193,8 @@ func _is_valid_partial_input(input: String) -> bool:
 		if not minute_str.is_empty():
 			if not minute_str.is_valid_int(): return false
 			if minute_str.length() > 2: return false
-			var minute_val = int(minute_str)
-			if minute_str.length() == 1 and minute_val > 5: return false # e.g., "12:6" is invalid
-			if minute_str.length() == 2 and minute_val > 59: return false
+			# var minute_val = int(minute_str)
+			# if minute_str.length() == 1 and minute_val > 5: return false # e.g., "12:6" is invalid
+			# if minute_str.length() == 2 and minute_val > 59: return false
 
 	return true
