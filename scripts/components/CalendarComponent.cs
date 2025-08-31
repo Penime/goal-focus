@@ -27,6 +27,8 @@ public partial class CalendarComponent : Panel
 	private Label _monthYearLabel;
 	private Button _selectedDateLabel;
 	private GridContainer _daysGrid;
+	private CheckBox _hebrewCheckBox;
+	private Button _todayButton;
 	private ButtonGroup _dayButtonGroup;
 
 	private DateTime _currentDate = DateTime.Today;
@@ -48,11 +50,17 @@ public partial class CalendarComponent : Panel
 		_monthYearLabel = GetNode<Label>("VBoxContainer/MarginContainer/Date/Label");
 		_daysGrid = GetNode<GridContainer>("VBoxContainer/GridContainer");
 		_selectedDateLabel = GetNode<Button>("VBoxContainer/DateButton");
+		_hebrewCheckBox = GetNode<CheckBox>("VBoxContainer/CalendarControl/CheckBox");
+		_todayButton = GetNode<Button>("VBoxContainer/CalendarControl/Button");
 		_dayButtonGroup = ResourceLoader.Load<ButtonGroup>("res://resources/calendar_button_group.tres");
 
 
 		_prevMonthButton.Pressed += () => ChangeMonth(-1);
 		_nextMonthButton.Pressed += () => ChangeMonth(1);
+		_todayButton.Pressed += GoToToday;
+
+		_hebrewCheckBox.ButtonPressed = IsHebrew;
+		_hebrewCheckBox.Toggled += OnHebrewCheckToggled;
 
 		_isReady = true;
 		DrawCalendar();
@@ -190,5 +198,24 @@ public partial class CalendarComponent : Panel
 		{
 			_selectedDateLabel.Text = _selectedDate.ToString("dddd, dd MMMM yyyy");
 		}
+	}
+
+	private void OnHebrewCheckToggled(bool isToggled)
+	{
+		IsHebrew = isToggled;
+		// The setter for IsHebrew calls DrawCalendar().
+		// We also need to update the bottom label which shows the full selected date.
+		UpdateSelectedDateLabel();
+	}
+
+	private void GoToToday()
+	{
+		_currentDate = DateTime.Today;
+		_selectedDate = DateTime.Today;
+		DrawCalendar();
+		UpdateSelectedDateLabel();
+		// Emit signal to notify other components of the date change
+		long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
+		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, unixTime);
 	}
 }
