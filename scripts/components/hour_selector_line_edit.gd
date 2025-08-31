@@ -57,6 +57,14 @@ func _ready() -> void:
 	clock_button.pressed.connect(_on_clock_pressed)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
+		time_selector_canvas_layer.hide()
+		clock_button.release_focus()
+		_hour_selected = false
+		_minute_selected = false
+
+
 func _on_text_changed(new_text: String) -> void:
 	# This signal is emitted when the text changes, but also when we change it from code.
 	# To prevent an infinite loop, we check if the new_text is the same as the last valid one.

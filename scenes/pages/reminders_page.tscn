@@ -45,7 +45,6 @@ text = "הבא"
 
 [node name="CreateReminderCanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
-visible = false
 follow_viewport_enabled = true
 
 [node name="Panel" type="Panel" parent="CreateReminderCanvasLayer"]
@@ -64,8 +63,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 3
 
 [node name="CalendarComponent" parent="CreateReminderCanvasLayer/MarginContainer" instance=ExtResource("3_j7kcn")]
 layout_mode = 2
-IsHebrew = true

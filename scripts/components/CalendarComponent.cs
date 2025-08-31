@@ -25,7 +25,7 @@ public partial class CalendarComponent : Panel
 	private Button _prevMonthButton;
 	private Button _nextMonthButton;
 	private Label _monthYearLabel;
-	private Label _selectedDateLabel;
+	private Button _selectedDateLabel;
 	private GridContainer _daysGrid;
 	private ButtonGroup _dayButtonGroup;
 
@@ -47,7 +47,7 @@ public partial class CalendarComponent : Panel
 		_hebrewDateConverter = GetNode<HebrewDateConverter>("/root/HebrewDateConverter");
 		_monthYearLabel = GetNode<Label>("VBoxContainer/MarginContainer/Date/Label");
 		_daysGrid = GetNode<GridContainer>("VBoxContainer/GridContainer");
-		_selectedDateLabel = GetNode<Label>("VBoxContainer/DateLabel");
+		_selectedDateLabel = GetNode<Button>("VBoxContainer/DateButton");
 		_dayButtonGroup = ResourceLoader.Load<ButtonGroup>("res://resources/calendar_button_group.tres");
 
 
