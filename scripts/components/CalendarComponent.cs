@@ -5,7 +5,7 @@ using System.Globalization;
 public partial class CalendarComponent : Panel
 {
 	[Signal]
-	public delegate void DateSelectedEventHandler(string dateString, long unixTime);
+	public delegate void DateSelectedEventHandler(Godot.Collections.Dictionary dateParts, long unixTime);
 
 	private bool _isHebrew = false;
 	[Export]
@@ -47,7 +47,6 @@ public partial class CalendarComponent : Panel
 
 	public override void _Ready()
 	{
-		_hebrewCulture.DateTimeFormat.Calendar = _hebrewCalendar;
 		_prevMonthButton = GetNode<Button>("VBoxContainer/MarginContainer/Date/BackMonthButton");
 		_nextMonthButton = GetNode<Button>("VBoxContainer/MarginContainer/Date/NextMonthButton");
 		_hebrewDateConverter = GetNode<HebrewDateConverter>("/root/HebrewDateConverter");
@@ -117,7 +116,8 @@ public partial class CalendarComponent : Panel
 			month = _currentDate.Month;
 			cal = _gregorianCalendar;
 			GD.Print($"Gregorian Date: Year={year}, Month={month}, Day={_currentDate.Day}");
-			_monthYearLabel.Text = _currentDate.ToString("MMMM yyyy");
+			// In Gregorian mode, show the month name localized to Hebrew (e.g., "ספטמבר").
+			_monthYearLabel.Text = _currentDate.ToString("MMMM yyyy", _hebrewCulture);
 		}
 
 		int daysInMonth = cal.GetDaysInMonth(year, month);
@@ -222,6 +222,8 @@ public partial class CalendarComponent : Panel
 		// The setter for IsHebrew calls DrawCalendar().
 		// We also need to update the bottom label which shows the full selected date.
 		UpdateSelectedDateLabel();
+		// Emit the signal again to notify listeners of the format change.
+		EmitDateSelectedSignal();
 	}
 
 	private void GoToToday()
@@ -255,6 +257,12 @@ public partial class CalendarComponent : Panel
 										DateTimeKind.Utc);
 
 		DateTimeOffset dto = new DateTimeOffset(fakeUtc);
-		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, dto.ToUnixTimeSeconds());
+		long unixTime = dto.ToUnixTimeSeconds();
+
+		// Get the date parts dictionary from the converter
+		var dateParts = _hebrewDateConverter.GetDateParts(_selectedDate, IsHebrew);
+
+		// Emit the dictionary and the unix time
+		EmitSignal(SignalName.DateSelected, dateParts, unixTime);
 	}
 }

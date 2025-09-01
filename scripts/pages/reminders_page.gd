@@ -28,4 +28,4 @@ func _on_add_reminder_pressed() -> void:
 
 
 func _on_date_selected(_date_name, unix) -> void:
-	pass
+	print(HebrewDateConverter.GetDatePartsFromUnix(unix, true))
