@@ -34,6 +34,7 @@ public partial class CalendarComponent : Panel
 
 	private DateTime _currentDate = DateTime.Today;
 	private DateTime _selectedDate = DateTime.Today;
+	private DateTime _firstDayOfDisplayedMonth;
 	private int _selectedHour = 0;
 	private int _selectedMinute = 0;
 	private bool _isReady = false;
@@ -69,7 +70,8 @@ public partial class CalendarComponent : Panel
 		_timeSelector.Connect("time_changed", Callable.From<int, int>(OnTimeChanged));
 		_selectedHour = _timeSelector.Get("hour").As<int>();
 		_selectedMinute = _timeSelector.Get("minute").As<int>();
-		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0);
+		// Ensure the initial date is treated as a local time.
+		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0, DateTimeKind.Local);
 
 		_isReady = true;
 		DrawCalendar();
@@ -123,7 +125,8 @@ public partial class CalendarComponent : Panel
 		DateTime firstDayOfMonth;
 		try
 		{
-			firstDayOfMonth = new DateTime(year, month, 1, cal);
+			_firstDayOfDisplayedMonth = new DateTime(year, month, 1, cal);
+			firstDayOfMonth = _firstDayOfDisplayedMonth;
 		}
 		catch (Exception e)
 		{
@@ -178,22 +181,24 @@ public partial class CalendarComponent : Panel
 
 	private void OnDayButtonPressed(int day, int year, int month)
 	{
-		Calendar cal = IsHebrew ? (Calendar)_hebrewCalendar : (Calendar)_gregorianCalendar;
-		GD.Print($"OnDayButtonPressed: Year={year}, Month={month}, Day={day}, Calendar={cal.GetType().Name}");
+		GD.Print($"OnDayButtonPressed: Day={day} of currently displayed month.");
 		try
 		{
-			_selectedDate = new DateTime(year, month, day, _selectedHour, _selectedMinute, 0, cal);
+			// Reconstruct the date by adding days to the first day of the currently displayed month.
+			// This is more robust than creating from calendar components each time.
+			DateTime dateOnly = _firstDayOfDisplayedMonth.AddDays(day - 1);
+
+			// Combine the calculated date with the currently selected time and specify its Kind as Local.
+			var newDate = new DateTime(dateOnly.Year, dateOnly.Month, dateOnly.Day, _selectedHour, _selectedMinute, 0);
+			_selectedDate = DateTime.SpecifyKind(newDate, DateTimeKind.Local);
+
 			GD.Print($"Successfully created _selectedDate: {_selectedDate}");
 			UpdateSelectedDateLabel();
-			long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
-			EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, unixTime);
+			EmitDateSelectedSignal();
 		}
 		catch (Exception e)
 		{
 			GD.PrintErr($"CRITICAL: Error creating DateTime in OnDayButtonPressed: {e.Message}");
-			GD.PrintErr($"Year={year}, Month={month}, Day={day}, Calendar={cal.GetType().Name}");
-			int daysInMonth = cal.GetDaysInMonth(year, month);
-			GD.PrintErr($"Days in this month: {daysInMonth}");
 		}
 	}
 
@@ -222,21 +227,34 @@ public partial class CalendarComponent : Panel
 	private void GoToToday()
 	{
 		_currentDate = DateTime.Today;
-		_selectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, _selectedHour, _selectedMinute, 0);
+		// DateTime.Today is already Kind=Local. Combine it with the selected time.
+		_selectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, _selectedHour, _selectedMinute, 0, DateTimeKind.Local);
 		DrawCalendar();
 		UpdateSelectedDateLabel();
 		// Emit signal to notify other components of the date change
-		long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
-		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, unixTime);
+		EmitDateSelectedSignal();
 	}
 
 	private void OnTimeChanged(int hour, int minute)
 	{
 		_selectedHour = hour;
 		_selectedMinute = minute;
-		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0);
+		// Recreate the date with the new time, preserving the date part and specifying Kind as Local.
+		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0, DateTimeKind.Local);
 		UpdateSelectedDateLabel();
-		long unixTime = ((DateTimeOffset)_selectedDate).ToUnixTimeSeconds();
-		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, unixTime);
+		EmitDateSelectedSignal();
+	}
+
+	private void EmitDateSelectedSignal()
+	{
+		// This method generates a Unix timestamp that matches the "wall clock" time, ignoring the local time zone.
+		// For example, if the user selects 7:00 in a UTC+3 zone, this will generate a timestamp for 7:00 UTC,
+		// not 4:00 UTC. This resolves the perceived time shift.
+		DateTime fakeUtc = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day,
+										_selectedDate.Hour, _selectedDate.Minute, _selectedDate.Second,
+										DateTimeKind.Utc);
+
+		DateTimeOffset dto = new DateTimeOffset(fakeUtc);
+		EmitSignal(SignalName.DateSelected, _selectedDateLabel.Text, dto.ToUnixTimeSeconds());
 	}
 }

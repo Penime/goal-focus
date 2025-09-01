@@ -45,6 +45,7 @@ text = "הבא"
 
 [node name="CreateReminderCanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 follow_viewport_enabled = true
 
 [node name="Panel" type="Panel" parent="CreateReminderCanvasLayer"]
