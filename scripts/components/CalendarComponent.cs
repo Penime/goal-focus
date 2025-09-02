@@ -5,7 +5,9 @@ using System.Globalization;
 public partial class CalendarComponent : Panel
 {
 	[Signal]
-	public delegate void DateSelectedEventHandler(Godot.Collections.Dictionary dateParts, long unixTime);
+	public delegate void DateSelectedEventHandler(long unixTime);
+	[Signal]
+	public delegate void CancelEventHandler();
 
 	private bool _isHebrew = false;
 	[Export]
@@ -25,7 +27,8 @@ public partial class CalendarComponent : Panel
 	private Button _prevMonthButton;
 	private Button _nextMonthButton;
 	private Label _monthYearLabel;
-	private Button _selectedDateLabel;
+	private Button _selectedDateButton;
+	private Button _cancelButton;
 	private GridContainer _daysGrid;
 	private CheckBox _hebrewCheckBox;
 	private Button _todayButton;
@@ -52,7 +55,8 @@ public partial class CalendarComponent : Panel
 		_hebrewDateConverter = GetNode<HebrewDateConverter>("/root/HebrewDateConverter");
 		_monthYearLabel = GetNode<Label>("VBoxContainer/MarginContainer/Date/Label");
 		_daysGrid = GetNode<GridContainer>("VBoxContainer/GridContainer");
-		_selectedDateLabel = GetNode<Button>("VBoxContainer/DateButton");
+		_selectedDateButton = GetNode<Button>("VBoxContainer/HBoxContainer/DateButton");
+		_cancelButton = GetNode<Button>("VBoxContainer/HBoxContainer/CancelButton");
 		_hebrewCheckBox = GetNode<CheckBox>("VBoxContainer/CalendarControl/CheckBox");
 		_todayButton = GetNode<Button>("VBoxContainer/CalendarControl/Button");
 		_timeSelector = GetNode<Node>("VBoxContainer/TimeSelector");
@@ -65,6 +69,9 @@ public partial class CalendarComponent : Panel
 
 		_hebrewCheckBox.ButtonPressed = IsHebrew;
 		_hebrewCheckBox.Toggled += OnHebrewCheckToggled;
+
+		_selectedDateButton.Pressed += EmitDateSelectedSignal;
+		_cancelButton.Pressed += EmitSignalCancel;
 
 		_timeSelector.Connect("time_changed", Callable.From<int, int>(OnTimeChanged));
 		_selectedHour = _timeSelector.Get("hour").As<int>();
@@ -194,7 +201,6 @@ public partial class CalendarComponent : Panel
 
 			GD.Print($"Successfully created _selectedDate: {_selectedDate}");
 			UpdateSelectedDateLabel();
-			EmitDateSelectedSignal();
 		}
 		catch (Exception e)
 		{
@@ -208,11 +214,11 @@ public partial class CalendarComponent : Panel
 		{
 			string hebrewDayOfWeek = _selectedDate.ToString("dddd", _hebrewCulture);
 			string timeString = _selectedDate.ToString("HH:mm");
-			_selectedDateLabel.Text = $"{hebrewDayOfWeek} {timeString}";
+			_selectedDateButton.Text = $"{hebrewDayOfWeek} {timeString}";
 		}
 		else
 		{
-			_selectedDateLabel.Text = _selectedDate.ToString("dddd HH:mm");
+			_selectedDateButton.Text = _selectedDate.ToString("dddd HH:mm");
 		}
 	}
 
@@ -222,8 +228,6 @@ public partial class CalendarComponent : Panel
 		// The setter for IsHebrew calls DrawCalendar().
 		// We also need to update the bottom label which shows the full selected date.
 		UpdateSelectedDateLabel();
-		// Emit the signal again to notify listeners of the format change.
-		EmitDateSelectedSignal();
 	}
 
 	private void GoToToday()
@@ -233,8 +237,6 @@ public partial class CalendarComponent : Panel
 		_selectedDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day, _selectedHour, _selectedMinute, 0, DateTimeKind.Local);
 		DrawCalendar();
 		UpdateSelectedDateLabel();
-		// Emit signal to notify other components of the date change
-		EmitDateSelectedSignal();
 	}
 
 	private void OnTimeChanged(int hour, int minute)
@@ -244,7 +246,6 @@ public partial class CalendarComponent : Panel
 		// Recreate the date with the new time, preserving the date part and specifying Kind as Local.
 		_selectedDate = new DateTime(_selectedDate.Year, _selectedDate.Month, _selectedDate.Day, _selectedHour, _selectedMinute, 0, DateTimeKind.Local);
 		UpdateSelectedDateLabel();
-		EmitDateSelectedSignal();
 	}
 
 	private void EmitDateSelectedSignal()
@@ -259,10 +260,7 @@ public partial class CalendarComponent : Panel
 		DateTimeOffset dto = new DateTimeOffset(fakeUtc);
 		long unixTime = dto.ToUnixTimeSeconds();
 
-		// Get the date parts dictionary from the converter
-		var dateParts = _hebrewDateConverter.GetDateParts(_selectedDate, IsHebrew);
-
-		// Emit the dictionary and the unix time
-		EmitSignal(SignalName.DateSelected, dateParts, unixTime);
+		// Emit the unix time
+		EmitSignal(SignalName.DateSelected, unixTime);
 	}
 }

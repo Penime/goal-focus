@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b50qrlveqarvl"]
 
-[ext_resource type="StyleBox" uid="uid://bdgywxs46blaj" path="res://resources/panels_stylebox.tres" id="1_g8quh"]
-[ext_resource type="Texture2D" uid="uid://crnv1noqgune4" path="res://assets/clock-solid.svg" id="2_2mxt2"]
+[ext_resource type="StyleBox" uid="uid://bdgywxs46blaj" path="res://resources/theme/panels_stylebox.tres" id="1_g8quh"]
+[ext_resource type="Texture2D" uid="uid://c1hv70w7ggvsu" path="res://assets/clock_01.svg" id="2_2mxt2"]
 
 [node name="GoalComponent" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 45)
@@ -15,9 +15,17 @@ theme_override_styles/panel = ExtResource("1_g8quh")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="IconTextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="IconTextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+modulate = Color(0.427451, 0.239216, 0, 1)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 texture = ExtResource("2_2mxt2")
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -33,3 +41,13 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.984314, 0.572549, 0.235294, 1)
 theme_override_font_sizes/font_size = 12
 text = "סטטוס"
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
+text = "12:36"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 4

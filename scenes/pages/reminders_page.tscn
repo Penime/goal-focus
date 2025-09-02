@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c45apptpjqsau"]
 
 [ext_resource type="Script" uid="uid://bkd015dy6wnoo" path="res://Scripts/pages/reminders_page.gd" id="1_mmyhl"]
-[ext_resource type="Texture2D" uid="uid://d2vtgljdgesxt" path="res://assets/clock.svg" id="2_fygyq"]
+[ext_resource type="Texture2D" uid="uid://ghaidsd3mxc4" path="res://assets/alarm.svg" id="2_j7kcn"]
 [ext_resource type="PackedScene" uid="uid://cp5ndgh36nm8r" path="res://scenes/components/calendar_component.tscn" id="3_j7kcn"]
 
 [node name="RemindersPage" type="Panel"]
@@ -24,13 +24,18 @@ grow_vertical = 2
 [node name="AddReminderButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "הוסף תזכורות "
-icon = ExtResource("2_fygyq")
+icon = ExtResource("2_j7kcn")
 icon_alignment = 2
 expand_icon = true
+
+[node name="RemindersVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
+size_flags_stretch_ratio = 0.0
 
 [node name="BackButton" type="Button" parent="VBoxContainer/Buttons"]
 layout_mode = 2

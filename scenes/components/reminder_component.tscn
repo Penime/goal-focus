@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctruc8lb3sja"]
+
+[ext_resource type="StyleBox" uid="uid://bdgywxs46blaj" path="res://resources/theme/panels_stylebox.tres" id="1_0hmpy"]
+[ext_resource type="Script" uid="uid://bweluxua7t03d" path="res://Scripts/components/reminder_component.gd" id="2_2f3ds"]
+[ext_resource type="Texture2D" uid="uid://c1hv70w7ggvsu" path="res://assets/clock_01.svg" id="2_8c72j"]
+[ext_resource type="Texture2D" uid="uid://b7p48y3qq22cm" path="res://assets/edit_calendar_fill.svg" id="3_we7mv"]
+[ext_resource type="Texture2D" uid="uid://cch0lo40ch2jm" path="res://assets/alarm_off_fill.svg" id="4_2f3ds"]
+[ext_resource type="Texture2D" uid="uid://b1pv68d58hav3" path="res://assets/alarm_fill.svg" id="5_mwgk7"]
+[ext_resource type="Texture2D" uid="uid://bteu2yi0y4uk3" path="res://assets/delete_fill.svg" id="6_fqk05"]
+
+[node name="ReminderComponent" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_direction = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("1_0hmpy")
+script = ExtResource("2_2f3ds")
+
+[node name="ContantContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ContantContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="Icon" type="TextureRect" parent="ContantContainer/MarginContainer"]
+visible = false
+modulate = Color(0.427451, 0.239216, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_8c72j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ReminderLabel" type="Label" parent="ContantContainer"]
+layout_mode = 2
+text = "התראה כאן"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContantContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 7
+
+[node name="EditTextureButton" type="TextureButton" parent="ContantContainer/HBoxContainer"]
+modulate = Color(0.427451, 0.239216, 0, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("3_we7mv")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ToggleTextureButton" type="TextureButton" parent="ContantContainer/HBoxContainer"]
+modulate = Color(0.184314, 0.521569, 0.352941, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("4_2f3ds")
+texture_pressed = ExtResource("5_mwgk7")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="DeleteTextureButton" type="TextureButton" parent="ContantContainer/HBoxContainer"]
+modulate = Color(0.772549, 0.188235, 0.188235, 1)
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture_normal = ExtResource("6_fqk05")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="ContantContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
