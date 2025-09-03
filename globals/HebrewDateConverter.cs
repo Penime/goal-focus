@@ -68,7 +68,7 @@ public partial class HebrewDateConverter : Node
 			parts["month_day"] = dateTime.Day.ToString();
 		}
 
-		parts["weekday"] = dateTime.ToString("dddd", _hebrewCulture);
+		parts["weekday"] = dateTime.ToString("dddd", _hebrewCulture).Replace("יום ", "");
 		parts["hour"] = dateTime.Hour.ToString("D2");
 		parts["minutes"] = dateTime.Minute.ToString("D2");
 

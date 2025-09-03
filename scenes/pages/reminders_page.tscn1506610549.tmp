@@ -36,7 +36,7 @@ popup/item_1/id = 1
 popup/item_2/text = "בזמן ספציפי"
 popup/item_2/id = 2
 
-[node name="RemindersContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="RemindersVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 

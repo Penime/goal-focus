@@ -5,6 +5,7 @@ const GOAL_FORM_PAGE: PackedScene = preload("res://scenes/pages/goal_form_page.t
 const MEAN_FORM_PAGE: PackedScene = preload("res://scenes/pages/mean_form_page.tscn")
 const REMINDERS_PAGE: PackedScene = preload("res://scenes/pages/reminders_page.tscn")
 const NOTIFICATION = preload("res://scenes/pages/notification.tscn")
+const REMINDER_COMPONENT = preload("res://scenes/components/reminder_component.tscn")
 
 var procss_data := {}
 
