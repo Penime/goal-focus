@@ -21,8 +21,8 @@ func _create_tables() -> void:
 	
 	var reminder_table := {
 		"id": {"data_type": "int", "primary_key": true, "auto_increment": true, "not_null": true},
-		"time": {"data_type": "real", "not_null": true},
-		"repeat": {"data_type": "real"},
+		"time": {"data_type": "int", "not_null": true},
+		"repeat": {"data_type": "int"},
 		"goal_id": {"data_type": "int", "not_null": true, "foreign_key": "goals.id"}
 	}
 	

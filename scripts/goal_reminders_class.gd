@@ -2,12 +2,12 @@ class_name GoalReminder
 extends RefCounted
 
 var id: int = -1
-var time: float
-var repeat: float
+var time: int
+var repeat: int
 var goal_id: int
 
 
-func _init(at_time: float, associated_goal_id: int, repeat_time:=0.0) -> void:
+func _init(at_time: int, associated_goal_id: int, repeat_time:=0) -> void:
 	self.time = at_time
 	self.goal_id = associated_goal_id
 	self.repeat = repeat_time

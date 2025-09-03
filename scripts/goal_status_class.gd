@@ -3,11 +3,11 @@ extends RefCounted
 
 var id: int = -1
 var status: String
-var time_stamp: float
+var time_stamp: int
 var goal: int = -1
 
 
-func _init(status_text: String, timestamp: float, goal_id: int) -> void:
+func _init(status_text: String, timestamp: int, goal_id: int) -> void:
 	self.status = status_text
 	self.time_stamp = timestamp
 	self.goal_id = goal_id

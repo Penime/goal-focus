@@ -4,14 +4,14 @@ extends RefCounted
 var id: int = -1
 var goal_massage: String = ""
 var mean_massage: String = ""
-var created_at: float
+var created_at: int
 var current_status: String
 
 
 func _init(goal_text: String, mean_text: String = "") -> void:
 	self.goal_massage = goal_text
 	self.mean_massage = mean_text
-	self.created_at = Time.get_unix_time_from_system()
+	self.created_at = int(Time.get_unix_time_from_system())
 	self.current_status = "נוצר"
 
 
