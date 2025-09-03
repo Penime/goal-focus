@@ -52,6 +52,7 @@ max_length = 5
 script = ExtResource("1_mnofo")
 
 [node name="TimeSelectorCanvasLayer" type="CanvasLayer" parent="TimeSelectorLineEdit"]
+layer = 2
 visible = false
 
 [node name="MarginContainer" type="MarginContainer" parent="TimeSelectorLineEdit/TimeSelectorCanvasLayer"]

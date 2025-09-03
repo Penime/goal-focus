@@ -41,7 +41,7 @@ func _on_button_menu_id_pressed(id: int) -> void:
 	
 	match id:
 		0:
-			# get time the long way to avoid tuc shift
+			# get time the long way to avoid utc shift
 			reminder_instance.unix_time = int(Time.get_unix_time_from_datetime_string(Time.get_datetime_string_from_system())) + 60 *  30
 		1:
 			reminder_instance.unix_time = int(Time.get_unix_time_from_datetime_string(Time.get_datetime_string_from_system())) + 60 *  60

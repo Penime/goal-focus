@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctruc8lb3sja"]
+[gd_scene load_steps=9 format=3 uid="uid://ctruc8lb3sja"]
 
 [ext_resource type="StyleBox" uid="uid://bdgywxs46blaj" path="res://resources/theme/panels_stylebox.tres" id="1_0hmpy"]
 [ext_resource type="Script" uid="uid://bweluxua7t03d" path="res://Scripts/components/reminder_component.gd" id="2_2f3ds"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cch0lo40ch2jm" path="res://assets/alarm_off_fill.svg" id="4_2f3ds"]
 [ext_resource type="Texture2D" uid="uid://b1pv68d58hav3" path="res://assets/alarm_fill.svg" id="5_mwgk7"]
 [ext_resource type="Texture2D" uid="uid://bteu2yi0y4uk3" path="res://assets/delete_fill.svg" id="6_fqk05"]
+[ext_resource type="PackedScene" uid="uid://cp5ndgh36nm8r" path="res://scenes/components/calendar_component.tscn" id="8_mwgk7"]
 
 [node name="ReminderComponent" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 45)
@@ -57,7 +58,6 @@ size_flags_horizontal = 10
 theme_override_constants/separation = 7
 
 [node name="EditTextureButton" type="TextureButton" parent="ContantContainer/ButtonsContainer"]
-visible = false
 modulate = Color(0.427451, 0.239216, 0, 1)
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
@@ -88,3 +88,8 @@ stretch_mode = 5
 [node name="MarginEnd" type="MarginContainer" parent="ContantContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 2
+
+[node name="CalendarCanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="CalendarComponent" parent="CalendarCanvasLayer" instance=ExtResource("8_mwgk7")]
