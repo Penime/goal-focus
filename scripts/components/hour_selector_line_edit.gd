@@ -60,7 +60,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
+	if time_selector_canvas_layer.visible && event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_cancel"):
 		time_selector_canvas_layer.hide()
 		clock_button.release_focus()
 		grab_focus()

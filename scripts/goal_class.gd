@@ -13,7 +13,6 @@ func _init(goal_text: String, mean_text: String = "", done_good_text: String = "
 	self.goal_massage = goal_text
 	self.mean_massage = mean_text
 	self.created_at = int(Time.get_unix_time_from_system())
-	self.current_status = "נוצר"
 	self.done_good = done_good_text
 	self.do_better = do_better_text
 
