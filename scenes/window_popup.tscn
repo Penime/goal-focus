@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bss2vyuhqeyu8"]
 
 [ext_resource type="Script" uid="uid://baq78b57ngitb" path="res://scripts/window_popup.gd" id="1_kddxt"]
-[ext_resource type="Theme" uid="uid://clnnrc4ouqm7b" path="res://resources/soft_worm_theme.theme" id="2_0tgy1"]
+[ext_resource type="Theme" uid="uid://clnnrc4ouqm7b" path="res://resources/theme/soft_worm_theme.theme" id="2_0tgy1"]
 
 [node name="WindowPopup" type="Window"]
 transparent_bg = true

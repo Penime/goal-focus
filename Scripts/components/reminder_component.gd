@@ -13,6 +13,8 @@ var unix_time: int :
 		unix_time = new_value
 		if is_node_ready():
 			update_reminder_label()
+	
+	get(): return unix_time
 var repeat_time: int = 0
 var active := true
 

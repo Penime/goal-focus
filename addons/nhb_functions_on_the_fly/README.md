@@ -1,7 +1,7 @@
 # NHB Functions On The Fly for Godot 4.4+
 
-<img src="                                                                                              " alt="Powered by Godot"> <a href="https://github.com/NickHatBoecker/nhb_functions_on_the_fly/issues/new"><img src="                                                                                                " alt="Report Issue"></a> <a href="                                " target="_blank">
-<img src="                                                                                                               " alt="Support me on Ko-fi">
+<img src="https://img.shields.io/badge/Godot-478CBF?style=for-the-badge&logo=GodotEngine&logoColor=white" alt="Powered by Godot"> <a href="https://github.com/NickHatBoecker/nhb_functions_on_the_fly/issues/new"><img src="https://img.shields.io/badge/Report_Issue-000000?style=for-the-badge&logo=github&logoColor=white" alt="Report Issue"></a> <a href="https://ko-fi.com/nickhatboecker" target="_blank">
+<img src="https://img.shields.io/badge/Support_Development_on_Ko--fi-f15f61?style=for-the-badge&logo=kofi&logoColor=white" alt="Support me on Ko-fi">
 </a>
 
 Easily create missing functions or getter/setters for variables in Godot on the fly.\
@@ -54,8 +54,8 @@ Shortcuts are configurable in the Editor settings. Under "_Plugin > NHB Function
 
 ## ⭐ Contributors
 
-- [Initial idea](                                                                                               ) and get/set variable creation: [u/siwoku](                                   )
-- Get text under cursor, so you don't have to select the text: [u/newold25](                                     )
-- Maintainer, considering indentation type, adding shorcuts: [u/NickHatBoecker](                                   )
+- [Initial idea](https://www.reddit.com/r/godot/comments/1morndn/im_a_lazy_programmer_and_added_a_generate_code/) and get/set variable creation: [u/siwoku](https://www.reddit.com/user/siwoku/)
+- Get text under cursor, so you don't have to select the text: [u/newold25](https://www.reddit.com/user/newold25/)
+- Maintainer, considering indentation type, adding shorcuts: [u/NickHatBoecker](https://nickhatboecker.de/linktree/)
 
 Pleae feel free to create a pull request!

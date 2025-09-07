@@ -16,7 +16,8 @@ func _create_tables() -> void:
 		"goal": {"data_type": "text", "not_null": true},
 		"mean": {"data_type": "text"},
 		"created_at": {"data_type": "real", "not_null": true},
-		"current_status": {"data_type": "text", "not_null": true}
+		"done_good": {"data_type": "text"},
+		"do_better": {"data_type": "text"},
 	}
 	
 	var reminder_table := {
@@ -26,16 +27,8 @@ func _create_tables() -> void:
 		"goal_id": {"data_type": "int", "not_null": true, "foreign_key": "goals.id"}
 	}
 	
-	var status_table := {
-		"id": {"data_type": "int", "primary_key": true, "auto_increment": true, "not_null": true},
-		"status": {"data_type": "text", "not_null": true},
-		"time_stamp": {"data_type": "real"},
-		"goal_id": {"data_type": "int", "not_null": true, "foreign_key": "goals.id"}
-	}
-	
 	_database.create_table("goals", goals_table)
 	_database.create_table("reminders", reminder_table)
-	_database.create_table("status", status_table)
 
 
 func get_all_goals() -> Array:
@@ -52,13 +45,6 @@ func get_reminders_by_goal_id(id: int) -> Array:
 JOIN goals ON reminders.goal_id = goals.id
 WHERE goals.id = " + str(id))
 	return _database.query_result.map(func(reminder): return GoalReminder.from_dictionary(reminder))
-
-
-func get_statuses_by_goal_id(id: int) -> Array:
-	_database.query("SELECT * FROM status
-JOIN goals ON status.goal_id = goals.id
-WHERE goals.id = " + str(id))
-	return _database.query_result.map(func(status): return GoalStatus.from_dictionary(status))
 
 
 func update_goal(goal_id: int, goal_data: Goal) -> void:
@@ -81,14 +67,9 @@ func delete_all_reminders_by_goal_id(goal_id: int) -> void:
 	_database.delete_rows("reminders", "goal_id = " + str(goal_id))
 
 
-func delete_all_statuses_by_goal_id(goal_id: int) -> void:
-	_database.delete_rows("status", "goal_id = " + str(goal_id))
-
-
 # func clear_database() -> void:
 # 	_database.delete_rows("goals", "id > 0")
 # 	_database.delete_rows("reminders", "id > 0")
-# 	_database.delete_rows("status", "id > 0")
 
 
 func insert_goal(goal: Goal) -> void:
@@ -97,7 +78,3 @@ func insert_goal(goal: Goal) -> void:
 
 func insert_reminder(reminder: GoalReminder) -> void:
 	_database.insert_row("reminders", reminder.to_dictionary())
-
-
-func insert_status(status: GoalStatus) -> void:
-	_database.insert_row("status", status.to_dictionary())

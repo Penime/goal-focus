@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cjy1rwhs5qebd"]
 
-[ext_resource type="Script" uid="uid://paj2ug3g1rph" path="res://Scripts/components/time_selector_line_edit.gd" id="1_8bv7r"]
-[ext_resource type="Script" uid="uid://6ft7121yub20" path="res://Scripts/components/hour_selector_line_edit.gd" id="1_mnofo"]
+[ext_resource type="Script" uid="uid://paj2ug3g1rph" path="res://scripts/components/time_selector_line_edit.gd" id="1_8bv7r"]
+[ext_resource type="Script" uid="uid://6ft7121yub20" path="res://scripts/components/hour_selector_line_edit.gd" id="1_mnofo"]
 [ext_resource type="Texture2D" uid="uid://crnv1noqgune4" path="res://assets/clock-solid.svg" id="1_rbuf2"]
 [ext_resource type="ButtonGroup" uid="uid://d2n5owdo6wnn2" path="res://resources/hour_buttons.tres" id="2_snij2"]
 [ext_resource type="ButtonGroup" uid="uid://bt4mjcgkd2bxc" path="res://resources/minutes_buttons.tres" id="3_rbuf2"]
-[ext_resource type="Script" uid="uid://vye4kdvjw56k" path="res://Scripts/components/time_select_button.gd" id="3_snij2"]
+[ext_resource type="Script" uid="uid://vye4kdvjw56k" path="res://scripts/components/time_select_button.gd" id="3_snij2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbuf2"]
 content_margin_left = 12.0

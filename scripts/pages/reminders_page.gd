@@ -4,7 +4,7 @@ extends Page
 @onready var back_button: Button = $VBoxContainer/Buttons/BackButton
 @onready var next_button: Button = $VBoxContainer/Buttons/NextButton
 @onready var add_reminder_button: MenuButton = $VBoxContainer/AddReminderButton
-@onready var reminders_container: VBoxContainer = $VBoxContainer/RemindersContainer
+@onready var reminders_container: VBoxContainer = $VBoxContainer/ScrollContainer/RemindersContainer
 @onready var create_reminder_canvas_layer: CanvasLayer = $CreateReminderCanvasLayer
 @onready var calendar_component: Panel = $CreateReminderCanvasLayer/MarginContainer/CalendarComponent
 
@@ -22,7 +22,12 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_next_button_pressed() -> void:
-	pass
+	var reminders = []
+	
+	for reminder in reminders_container.get_children():
+		reminders.append(reminder.unix_time)
+	
+	GlobalData.procss_data["goal"].reminders = reminders
 
 
 func _on_date_selected(unix: int) -> void:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://ctruc8lb3sja"]
 
 [ext_resource type="StyleBox" uid="uid://bdgywxs46blaj" path="res://resources/theme/panels_stylebox.tres" id="1_0hmpy"]
-[ext_resource type="Script" uid="uid://bweluxua7t03d" path="res://Scripts/components/reminder_component.gd" id="2_2f3ds"]
+[ext_resource type="Script" uid="uid://bweluxua7t03d" path="res://scripts/components/reminder_component.gd" id="2_2f3ds"]
 [ext_resource type="Texture2D" uid="uid://c1hv70w7ggvsu" path="res://assets/clock_01.svg" id="2_8c72j"]
 [ext_resource type="Texture2D" uid="uid://b7p48y3qq22cm" path="res://assets/edit_calendar_fill.svg" id="3_we7mv"]
 [ext_resource type="Texture2D" uid="uid://cch0lo40ch2jm" path="res://assets/alarm_off_fill.svg" id="4_2f3ds"]
