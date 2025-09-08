@@ -7,7 +7,7 @@ const REMINDERS_PAGE: PackedScene = preload("res://scenes/pages/reminders_page.t
 const NOTIFICATION = preload("res://scenes/pages/notification.tscn")
 const REMINDER_COMPONENT = preload("res://scenes/components/reminder_component.tscn")
 
-var procss_data := {}
+var process_data := {}
 
 
 func show_notification(text:="", duration:=2) -> Notification:

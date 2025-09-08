@@ -6,10 +6,10 @@ extends Page
 
 
 func _ready() -> void:
-	if !GlobalData.procss_data.has("goal"):
+	if !GlobalData.process_data.has("goal"):
 		await GlobalData.show_notification("משהו השתבש!", 2).timer.timeout
 		change_page_to(GlobalData.STARTING_PAGE, "animate_in_from_right", "animate_out")
-	elif GlobalData.procss_data["goal"].mean_massage:
+	elif GlobalData.process_data["goal"].mean_massage:
 		question.answer_text_edit.text = GlobalData.procss_data["goal"].mean_massage
 	back_button.pressed.connect(_on_back_button_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)

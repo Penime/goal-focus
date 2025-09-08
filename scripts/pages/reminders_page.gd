@@ -15,6 +15,13 @@ func _ready() -> void:
 	add_reminder_button.get_popup().id_pressed.connect(_on_button_menu_id_pressed)
 	calendar_component.DateSelected.connect(_on_date_selected)
 	calendar_component.Cancel.connect(_on_calendar_cancel)
+	
+	if GlobalData.process_data.has("reminders") && !GlobalData.process_data["reminders"].is_empty():
+		for reminder_unix_time in GlobalData.process_data["reminders"]:
+			var reminder_instance = GlobalData.REMINDER_COMPONENT.instantiate()
+			reminder_instance.unix_time = reminder_unix_time
+			reminders_container.add_child(reminder_instance)
+	else: GlobalData.process_data["reminders"] = []
 
 
 func _on_back_button_pressed() -> void:
@@ -22,12 +29,7 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_next_button_pressed() -> void:
-	var reminders = []
-	
-	for reminder in reminders_container.get_children():
-		reminders.append(reminder.unix_time)
-	
-	GlobalData.procss_data["goal"].reminders = reminders
+	pass
 
 
 func _on_date_selected(unix: int) -> void:
@@ -43,15 +45,19 @@ func _on_calendar_cancel() -> void:
 
 func _on_button_menu_id_pressed(id: int) -> void:
 	var reminder_instance = GlobalData.REMINDER_COMPONENT.instantiate()
+	var unix = 0
 	
 	match id:
 		0:
 			# get time the long way to avoid utc shift
 			reminder_instance.unix_time = int(Time.get_unix_time_from_datetime_string(Time.get_datetime_string_from_system())) + 60 *  30
+			unix = reminder_instance.unix_time
 		1:
 			reminder_instance.unix_time = int(Time.get_unix_time_from_datetime_string(Time.get_datetime_string_from_system())) + 60 *  60
+			unix = reminder_instance.unix_time
 		2:
 			create_reminder_canvas_layer.show()
 	
 	if id != 2:
 		reminders_container.add_child(reminder_instance)
+		GlobalData.process_data["reminders"].append(unix)
