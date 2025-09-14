@@ -10,7 +10,7 @@ func _ready() -> void:
 		await GlobalData.show_notification("משהו השתבש!", 2).timer.timeout
 		change_page_to(GlobalData.STARTING_PAGE, "animate_in_from_right", "animate_out")
 	elif GlobalData.process_data["goal"].mean_massage:
-		question.answer_text_edit.text = GlobalData.procss_data["goal"].mean_massage
+		question.answer_text_edit.text = GlobalData.process_data["goal"].mean_massage
 	back_button.pressed.connect(_on_back_button_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)
 
@@ -21,5 +21,5 @@ func _on_back_button_pressed() -> void:
 
 func _on_next_button_pressed() -> void:
 	if question.get_answer():
-		GlobalData.procss_data["goal"].mean_massage = question.get_answer()
+		GlobalData.process_data["goal"].mean_massage = question.get_answer()
 	change_page_to(GlobalData.REMINDERS_PAGE, "animate_in_from_left", "animate_out")

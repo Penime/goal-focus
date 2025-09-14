@@ -6,17 +6,23 @@ extends Page
 
 
 func _ready() -> void:
-	if GlobalData.process_data.has("goal") && GlobalData.procss_data["goal"].goal_massage:
-		question.answer_text_edit.text = GlobalData.procss_data["goal"].goal_massage
+	if GlobalData.process_data.has("goal") && GlobalData.process_data["goal"].goal_massage:
+		question.answer_text_edit.text = GlobalData.process_data["goal"].goal_massage
 	back_button.pressed.connect(_on_back_button_pressed)
 	next_button.pressed.connect(_on_next_button_pressed)
 
 
 func _on_next_button_pressed() -> void:
-	if question.get_answer():
+	if not question.get_answer():
+		GlobalData.show_notification("זהו שדה חובה!", 2)
+		return
+	
+	if not GlobalData.process_data.has("goal"):
 		GlobalData.process_data["goal"] = Goal.new(question.get_answer())
-		change_page_to(GlobalData.MEAN_FORM_PAGE, "animate_in_from_left", "animate_out")
-	else: GlobalData.show_notification("זהו שדה חובה!", 2)
+	else:
+		GlobalData.process_data["goal"].goal_massage = question.get_answer()
+	
+	change_page_to(GlobalData.MEAN_FORM_PAGE, "animate_in_from_left", "animate_out")
 
 
 func _on_back_button_pressed() -> void:
