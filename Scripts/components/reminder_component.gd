@@ -6,7 +6,7 @@ signal deleting(unix_time: int)
 @onready var edit_texture_button: TextureButton = $ContantContainer/ButtonsContainer/EditTextureButton
 @onready var delete_texture_button: TextureButton = $ContantContainer/ButtonsContainer/DeleteTextureButton
 @onready var calendar_canvas_layer: CanvasLayer = $CalendarCanvasLayer
-@onready var calendar_component: Panel = $CalendarCanvasLayer/CalendarComponent
+@onready var calendar_component: Panel = $CalendarCanvasLayer/MarginContainer/CalendarComponent
 @onready var buttons_container: HBoxContainer = $ContantContainer/ButtonsContainer
 
 var reminder_name: String :
