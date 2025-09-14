@@ -27,8 +27,15 @@ func _create_tables() -> void:
 		"goal_id": {"data_type": "int", "not_null": true, "foreign_key": "goals.id"}
 	}
 	
+	var settings_table := {
+		"default_date_format" : {"data_type": "text", "not_null": true, "default": "he"}, # he (Hebrew) or gr (Gregorian)
+		"day_start_time" : {"data_type": "int", "not_null": true, "default": 6},
+		"day_end_time" : {"data_type": "int", "not_null": true, "default": 18},
+	}
+	
 	_database.create_table("goals", goals_table)
 	_database.create_table("reminders", reminder_table)
+	_database.create_table("settings", settings_table)	
 
 
 func get_all_goals() -> Array:
@@ -78,3 +85,27 @@ func insert_goal(goal: Goal) -> void:
 
 func insert_reminder(reminder: GoalReminder) -> void:
 	_database.insert_row("reminders", reminder.to_dictionary())
+
+
+func update_default_date_format(date_format: String) -> void:
+	_database.update_rows("settings", "", {"default_date_format": date_format})
+
+
+func update_day_start_time(time: int) -> void:
+	_database.update_rows("settings", "", {"day_start_time": time})
+
+
+func update_day_end_time(time: int) -> void:
+	_database.update_rows("settings", "", {"day_end_time": time})
+
+
+func get_default_date_format() -> String:
+	return _database.select_rows("settings", "", ["default_date_format"])[0]["default_date_format"]
+
+
+func get_day_start_time() -> int:
+	return _database.select_rows("settings", "", ["day_start_time"])[0]["day_start_time"]
+
+
+func get_day_end_time() -> int:
+	return _database.select_rows("settings", "", ["day_end_time"])[0]["day_end_time"]
