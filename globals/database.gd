@@ -15,7 +15,7 @@ func _create_tables() -> void:
 		"id": {"data_type": "int", "primary_key": true, "auto_increment": true, "not_null": true},
 		"goal": {"data_type": "text", "not_null": true},
 		"mean": {"data_type": "text"},
-		"created_at": {"data_type": "real", "not_null": true},
+		"created_at": {"data_type": "int", "not_null": true},
 		"done_good": {"data_type": "text"},
 		"do_better": {"data_type": "text"},
 	}
@@ -42,8 +42,16 @@ func get_all_goals() -> Array:
 	var goals_dict = _database.select_rows("goals", "", ["*"])
 	return goals_dict.map(func(goal): return Goal.from_dictionary(goal))
 
+
 func get_goal_by_id(id: int) -> Goal:
-	var goal_dict = _database.select_rows("goals", "where id = " + str(id), ["*"])
+	var goal_dict = _database.select_rows("goals", "id = " + str(id), ["*"])
+	return Goal.from_dictionary(goal_dict[0])
+
+
+func get_goal_by_name(goal_name: String) -> Goal:
+	var goal_dict = _database.select_rows("goals", "goal = '" + goal_name + "'", ["*"])
+	if goal_dict.is_empty():
+		assert("goal dict is empty!")
 	return Goal.from_dictionary(goal_dict[0])
 
 
@@ -79,8 +87,8 @@ func delete_all_reminders_by_goal_id(goal_id: int) -> void:
 # 	_database.delete_rows("reminders", "id > 0")
 
 
-func insert_goal(goal: Goal) -> void:
-	_database.insert_row("goals", goal.to_dictionary())
+func insert_goal(goal: Goal) -> bool:
+	return _database.insert_row("goals", goal.to_dictionary())
 
 
 func insert_reminder(reminder: GoalReminder) -> void:

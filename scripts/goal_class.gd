@@ -18,14 +18,14 @@ func _init(goal_text: String, mean_text: String = "", done_good_text: String = "
 
 
 static func from_dictionary(data: Dictionary) -> Goal:
-	var new_goal := Goal.new(data.get("goal_massage"), data.get("mean_massage", ""))
+	var new_goal := Goal.new(data.get("goal"), data.get("mean", ""))
 	new_goal.id = data.get("id", -1)
 	new_goal.done_good = data.get("done_good", "")
 	new_goal.do_better = data.get("do_better", "")
 	if not new_goal.id or not new_goal.goal_massage:
 		assert(false, "invalid goal_massage data from dictionary: " + str(data))
 		return
-	new_goal.created_at = data.get("created_at", 0.0)
+	new_goal.created_at = data.get("created_at", 0)
 	return new_goal
 
 
@@ -35,5 +35,5 @@ func to_dictionary() -> Dictionary:
 		assert(false, "invalid goal_massage data from object")
 		return {}
 	return {
-		"goal_massage": goal_massage, "mean_massage": mean_massage, "created_at": created_at, "done_good": done_good, "do_better": do_better,
+		"goal": goal_massage, "mean": mean_massage, "created_at": created_at, "done_good": done_good, "do_better": do_better,
 	}
