@@ -24,7 +24,6 @@ content_path = "res://addons/godot_style/items_md/others/addon_theme.md"
 [sub_resource type="Resource" id="Resource_hcsuu"]
 script = ExtResource("1_iw74d")
 name = "Markdown implementation"
-content_title = ""
 content_path = "res://addons/godot_style/items_md/others/markdown_implementation.md"
 
 [sub_resource type="Resource" id="Resource_cg2df"]

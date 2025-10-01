@@ -13,7 +13,7 @@ config_version=5
 config/name="Goal Focus"
 config/version="0.1"
 run/main_scene="uid://cnbf1unbbcvj4"
-config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/windows_native_icon="res://assets/img.ico"
 
 [autoload]
