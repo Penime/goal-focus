@@ -30,6 +30,7 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_next_button_pressed() -> void:
+	Database.insert_goal(GlobalData.process_data["goal"])
 	var goal = Database.get_goal_by_name(GlobalData.process_data["goal"].goal_massage)
 	for i in GlobalData.process_data["reminders"]:
 		Database.insert_reminder(GoalReminder.new(i, goal.id))

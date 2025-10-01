@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b50qrlveqarvl"]
+[gd_scene load_steps=8 format=3 uid="uid://cetjjerbcfgst"]
 
 [ext_resource type="StyleBox" uid="uid://bdgywxs46blaj" path="res://resources/theme/panels_stylebox.tres" id="1_g8quh"]
-[ext_resource type="Texture2D" uid="uid://c1hv70w7ggvsu" path="res://assets/clock_01.svg" id="2_2mxt2"]
+[ext_resource type="Script" uid="uid://i4tqpqgc4yf1" path="res://scripts/components/goal_component.gd" id="1_ndyt8"]
+[ext_resource type="Texture2D" uid="uid://b1pv68d58hav3" path="res://assets/alarm_fill.svg" id="2_ra12a"]
+[ext_resource type="Texture2D" uid="uid://bupyuwf3ia5av" path="res://assets/circle_fill.svg" id="3_ra12a"]
+[ext_resource type="Texture2D" uid="uid://oygh2urkl350" path="res://assets/squarefill.svg" id="4_ndyt8"]
+[ext_resource type="Texture2D" uid="uid://qnk1t3nkbyb3" path="res://assets/check_circle_fill.svg" id="4_uivwl"]
+[ext_resource type="Texture2D" uid="uid://bexxjxgxvmuy4" path="res://assets/check_box_fill.svg" id="6_dl6os"]
 
 [node name="GoalComponent" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 45)
@@ -11,43 +16,78 @@ anchor_right = 1.0
 offset_bottom = 36.0
 grow_horizontal = 2
 theme_override_styles/panel = ExtResource("1_g8quh")
+script = ExtResource("1_ndyt8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
 
-[node name="IconTextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
-modulate = Color(0.427451, 0.239216, 0, 1)
-custom_minimum_size = Vector2(36, 36)
+[node name="SummeryContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_2mxt2")
+
+[node name="DoneGoodButton" type="TextureButton" parent="HBoxContainer/SummeryContainer"]
+modulate = Color(0.984314, 0.572549, 0.235294, 1)
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("3_ra12a")
+texture_pressed = ExtResource("4_uivwl")
+ignore_texture_size = true
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="DoeBetterButton" type="TextureButton" parent="HBoxContainer/SummeryContainer"]
+modulate = Color(0.984314, 0.572549, 0.235294, 1)
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.0
+toggle_mode = true
+texture_normal = ExtResource("4_ndyt8")
+texture_pressed = ExtResource("6_dl6os")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="LabelsContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="GoalTitleLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="GoalTitleLabel" type="Label" parent="HBoxContainer/LabelsContainer"]
 layout_mode = 2
 text = "שם המטרה"
 
-[node name="GoalStatusLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="GoalMeanLabel" type="Label" parent="HBoxContainer/LabelsContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.984314, 0.572549, 0.235294, 1)
 theme_override_font_sizes/font_size = 12
-text = "סטטוס"
+text = "השגת מטרה"
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="RemindersContainer" type="HBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+
+[node name="ReminderLabel" type="Label" parent="HBoxContainer/RemindersContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.0
 theme_override_colors/font_color = Color(0.427451, 0.239216, 0, 1)
 text = "12:36"
 
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/RemindersContainer"]
+modulate = Color(0.427451, 0.239216, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("2_ra12a")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_right = 4
