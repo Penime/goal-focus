@@ -35,8 +35,6 @@ func _update_elements():
 	var date_parts = HebrewDateConverter.GetDatePartsFromUnix(closest_reminder_time, true)
 	reminder_label.text = str(date_parts["hour"]) + ":" + str(date_parts["minute"])
 
-		
-
 
 func _on_done_good_button_pressed() -> void:
 	pass
